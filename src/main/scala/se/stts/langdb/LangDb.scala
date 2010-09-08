@@ -65,9 +65,6 @@ case class Family(name: String, iso: Option[String]) extends AutoId
 //case class Remark(text: String, langId: Int = 0) extends AutoId
 
 
-// @ToMax: Why must LangAndCountry ('association table') extend KeyedEntity?
-// @ToMax: How do I create a DB alias for a table name in a many-to-many relation? Cf. Lang_And_Country vs. LangAndCountry
-
 // Association table between Lang and Country, between which there is a many-to-many relationship:
 //@TODO@ default Speakers = None
 //@TODO@ Speakers >= 0
