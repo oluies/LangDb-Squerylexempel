@@ -1,4 +1,10 @@
-git clone git://github.com/NikolajLindberg/LangDb-Squerylexempel.git
+(1) git clone git://github.com/NikolajLindberg/LangDb-Squerylexempel.git
+    - verkar inte funka så bra med push
  eller
-git clone git@github.com:NikolajLindberg/LangDb-Squerylexempel.git
+
+(2) git clone git@github.com:NikolajLindberg/LangDb-Squerylexempel.git
+    - bättre om man ska pusha
+
+
+
 
