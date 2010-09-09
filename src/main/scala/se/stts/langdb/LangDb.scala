@@ -62,8 +62,6 @@ case class Family(name: String, iso: Option[String]) extends AutoId
   def this() = this("", Some("")) // TA BORT FRAN KODRUTA
 } // TA BORT FRAN KODRUTA
 
-//case class Remark(text: String, langId: Int = 0) extends AutoId
-
 
 // Association table between Lang and Country, between which there is a many-to-many relationship:
 //@TODO@ default Speakers = None
@@ -89,7 +87,6 @@ object LangDb extends Schema {
   val altNames = table[AltName] // TA BORT FRAN KODRUTA ("ALT_NAMES")
   val countries = table[Country]
   val families = table[Family]
-  val remarks = table[Remark]
 
   //
   // Relations
