@@ -17,16 +17,13 @@ trait AutoId extends KeyedEntity[Int] {
 }
 
 
-// @TODO@ iso2 : constraint: 2 tecken
-// @TODO@ iso3 : constraint: 3 tecken
-// iso2 = ISO 3166-1 alpha-2
-// iso3 = ISO 3166-1 alpha-3
 
 // Declaring a 'case class' adds functionality to a class. For
 // example, 'getters and setters' for constructor arguments and other
 // nice stuff.
 
-//@TODO@ default cBlock = None
+// TODO iso : constraint: 3 tecken
+// TODO default cBlock = None
 case class Lang(iso: String, enName: String, cBlock: Option[String]) extends AutoId {
   // 'Option' construnctor parameters make the following zero-argument
   // default constructor necessary (this is a Squeryl thing):
@@ -42,12 +39,8 @@ case class AltName(name: String, langId: Int = 0) extends AutoId {
 }
 
 
-// @TODO@ iso : constraint: 3 tecken
-
-// ny 3-teckensstandard: ISO 639-3, men java anvander 639-2
-
-// @TODO Skall area vara Option?
-//@TODO@ default area = None
+// TODO iso : constraint: 2 tecken
+// TODO default area = None
 case class Country(iso: String, enName: String, area: Option[String]) extends AutoId 
 { // TA BORT FRAN KODRUTA
   def this() = this("", "", Some(""))  // TA BORT FRAN KODRUTA
@@ -55,8 +48,8 @@ case class Country(iso: String, enName: String, area: Option[String]) extends Au
 
 
 // ISO codes for language families: ISO 639-5 
-// @TODO@ constraint: iso : 3 tecken
-// @TODO@ constraint: name and iso should be unique
+// TODO constraint: iso : 3 tecken
+// TODO constraint: name and iso should be unique
 case class Family(name: String, iso: Option[String]) extends AutoId 
 { // TA BORT FRAN KODRUTA
   def this() = this("", Some("")) // TA BORT FRAN KODRUTA
@@ -64,9 +57,8 @@ case class Family(name: String, iso: Option[String]) extends AutoId
 
 
 // Association table between Lang and Country, between which there is a many-to-many relationship:
-//@TODO@ default Speakers = None
-//@TODO@ Speakers >= 0
-//@TODO@ countryId+langId ÃÂ¤r foreign keys => definiera ej i konstruktorn?
+//TODO default Speakers = None
+//TODO Speakers >= 0
 case class LangAndCountry(official: Option[Boolean], speakers: Option[Int], langId: Int = 0, countryId: Int = 0) extends KeyedEntity[CompositeKey2[Int,Int]] {
   def this() = this(Some(false), Some(0), 0, 0) // TA BORT FRAN KODRUTA
   def id = compositeKey(countryId, langId)
@@ -82,9 +74,7 @@ object LangDb extends Schema {
   // Basic data tables
   //
   val langs = table[Lang]
-  //val langs: Table[Lang] = table[Lang] //Typangivelsen Table[Lang] ar optionell
-  //val altNames = table[AltName]("ALT_NAMES")
-  val altNames = table[AltName] // TA BORT FRAN KODRUTA ("ALT_NAMES")
+  val altNames = table[AltName]
   val countries = table[Country]
   val families = table[Family]
 
