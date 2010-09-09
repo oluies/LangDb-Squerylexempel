@@ -1,0 +1,5 @@
+== Programversioner ==
+* Squeryl Git master branch 2010-09-04
+* Databas H2 1.2.141
+* Scala 2.8 final
+* Java 1.6
