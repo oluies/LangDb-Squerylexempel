@@ -2,3 +2,4 @@ lib/squeryl_2.8.0-0.9.4beta8-enums.jar
 lib
 lib_managed
 target
+project/boot
