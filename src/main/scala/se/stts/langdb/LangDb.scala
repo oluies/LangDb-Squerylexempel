@@ -22,9 +22,7 @@ trait AutoId extends KeyedEntity[Int] {
 // example, 'getters and setters' for constructor arguments and other
 // nice stuff.
 
-// TODO iso : constraint: 3 tecken
-// TODO default cBlock = None
-case class Lang(iso: String, enName: String, cBlock: Option[String]) extends AutoId {
+case class Lang(@Column(length = 3) iso: String, enName: String, cBlock: Option[String] = None) extends AutoId {
   // 'Option' construnctor parameters make the following zero-argument
   // default constructor necessary (this is a Squeryl thing):
   def this() = this("", "", Some("")) // TA BORT FRAN KODRUTA
@@ -39,9 +37,7 @@ case class AltName(name: String, langId: Int = 0) extends AutoId {
 }
 
 
-// TODO iso : constraint: 2 tecken
-// TODO default area = None
-case class Country(iso: String, enName: String, area: Option[String]) extends AutoId 
+case class Country(@Column(length = 2) iso: String, enName: String, area: Option[String] = None) extends AutoId 
 { // TA BORT FRAN KODRUTA
   def this() = this("", "", Some(""))  // TA BORT FRAN KODRUTA
 } // TA BORT FRAN KODRUTA
@@ -50,7 +46,8 @@ case class Country(iso: String, enName: String, area: Option[String]) extends Au
 // ISO codes for language families: ISO 639-5 
 // TODO constraint: iso : 3 tecken
 // TODO constraint: name and iso should be unique
-case class Family(name: String, iso: Option[String]) extends AutoId 
+case class Family(name: String, 
+		  @Column(length = 3) iso: Option[String]) extends AutoId 
 { // TA BORT FRAN KODRUTA
   def this() = this("", Some("")) // TA BORT FRAN KODRUTA
 } // TA BORT FRAN KODRUTA
