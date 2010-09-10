@@ -34,11 +34,14 @@ class ArtikelKodTest extends Specification {
       inTransaction {
      	val session = Session.currentSession
 
-	val names = from(LangDb.langs)(l => select(l.enName))
-	//names.foreach(println(_))
-	names.toSet.contains("Swedish") mustEqual true
- 	names.toSet.contains("English") mustEqual true
-	names.toSet.contains("Finnish") mustEqual true
+	val names = from(LangDb.langs)(l => select(l.enName)).toList
+	// -> Swedish
+	// -> English
+	// -> Finnish
+	// -> ...
+	names(0) mustEqual "Swedish"
+	names(1) mustEqual "English"
+	names(2) mustEqual "Finnish"
       }
     }
 
@@ -51,7 +54,7 @@ class ArtikelKodTest extends Specification {
 	val nLangs = from(LangDb.langs)(l => 
 	  compute(count)
         ).single.measures
-	//println(nLangs)
+	// -> 22
 	nLangs mustEqual 22
       }
     }
@@ -66,7 +69,8 @@ class ArtikelKodTest extends Specification {
 	  l => 
     	    where(l.enName === "Finnish")
 	    select(l)).single
-	//lang.altNames.foreach(a => println(a.name))
+	// -> finska
+	// -> suomi
 	lang.altNames.map(_.name).toSet mustEqual Set("finska","suomi")
       }
     }
@@ -82,7 +86,8 @@ class ArtikelKodTest extends Specification {
     	    where(l.enName === "Finnish" and
 		l.id === a.langId)
 	    select(a.name))
-	altNames.foreach(println(_))
+	// -> finska
+	// -> suomi
 	altNames.toSet mustEqual Set("finska","suomi")
       }
     }
@@ -98,7 +103,8 @@ class ArtikelKodTest extends Specification {
     	    where(l.enName === "Finnish")
 	    select(a.map(_.name))
 	on(l.id === a.map(_.langId)))
-	altNames.flatten.foreach(println(_))
+	// -> finska
+	// -> suomi
 	altNames.flatten.toSet mustEqual Set("finska","suomi")
       }
     }
@@ -117,8 +123,12 @@ class ArtikelKodTest extends Specification {
 	  (l, a) => 
 	    select((l.enName, a.map(_.name)) )
     	  on(l.id === a.map(_.langId)))
-	//names.foreach( n => println(n._1 + " => " + n._2.getOrElse("null")))
 
+	// -> Swedish => svenska
+	// -> English => n/a
+	// -> Finnish => finska
+	// -> Finnish => suomi
+	//...
 	val map = names.filter( n => n._2 != None).map( n => (n._1, n._2.get)).toMap
 	map("Swedish") mustEqual "svenska"
 	map must notContain("English")
