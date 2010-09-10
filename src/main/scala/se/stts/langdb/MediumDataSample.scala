@@ -8,10 +8,10 @@ object MediumDataSample {
   val langs = List(
     Lang("swe", "Swedish", Some("LATIN")),
     Lang("fin", "Finnish", Some("LATIN")),
+    Lang("eng", "English", Some("LATIN")),
     Lang("spa", "Spanish", Some("LATIN")),
     Lang("cat", "Catalan", Some("LATIN")),
     Lang("fra", "French", Some("LATIN")),
-    Lang("eng", "English", Some("LATIN")),
     Lang("rus", "Russian", Some("CYRILLIC")),
     Lang("bul", "Bulgarian", Some("CYRILLIC")),
     Lang("ara", "Arabic", Some("ARABIC")),

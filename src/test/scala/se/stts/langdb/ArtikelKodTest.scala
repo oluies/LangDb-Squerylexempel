@@ -22,45 +22,27 @@ class ArtikelKodTest extends Specification {
       transaction {
 	LangDb.drop
 	LangDb.create
+	MediumDataSample.createDb(new java.io.File(dbPath))
       }
       true mustEqual true
     }
 
 
-    "work with sample test insertions" in {
-      import org.squeryl.PrimitiveTypeMode._
-
-      inTransaction {
-     	val session = Session.currentSession
-
-	val swe0 = Lang("swe", "Swedish", Some("LATIN"))
-	val swe = LangDb.langs.insert(swe0)
-	swe.altNames.associate(AltName("svenska"))
-	
-	val eng0 = Lang("eng", "English", Some("LATIN"))
-	val eng = LangDb.langs.insert(eng0)
-	
-	val fin0 = Lang("fin", "Finnish", Some("LATIN"))
-	val fin = LangDb.langs.insert(fin0)
-	fin.altNames.associate(AltName("finska"))
-	fin.altNames.associate(AltName("suomi"))
-      }      
-      true mustEqual true
-    }
-
-    "work with sample test queries (1)" in {
+    "with with example search: list all language names (enName)" in {
       import org.squeryl.PrimitiveTypeMode._
 
       inTransaction {
      	val session = Session.currentSession
 
 	val names = from(LangDb.langs)(l => select(l.enName))
-	names.foreach(println(_))
-	names.toSet mustEqual Set("Swedish","English","Finnish")
+	//names.foreach(println(_))
+	names.toSet.contains("Swedish") mustEqual true
+ 	names.toSet.contains("English") mustEqual true
+	names.toSet.contains("Finnish") mustEqual true
       }
     }
 
-    "work with sample test queries (2)" in {
+    "with with example search: count number of languages" in {
       import org.squeryl.PrimitiveTypeMode._
 
       inTransaction {
@@ -69,34 +51,12 @@ class ArtikelKodTest extends Specification {
 	val nLangs = from(LangDb.langs)(l => 
 	  compute(count)
         ).single.measures
-	println(nLangs)
-	nLangs mustEqual 3
+	//println(nLangs)
+	nLangs mustEqual 22
       }
     }
 
-    "work with sample test queries (3)" in {
-      import org.squeryl.PrimitiveTypeMode._
-
-//       SELECT LANG.ENNAME, ALT_NAMES.NAME
-//         FROM LANG 
-//         LEFT JOIN ALT_NAMES ON (ALT_NAMES.LANGID = LANG.ID)
-
-      inTransaction {
-     	val session = Session.currentSession
-
-	val names = join(LangDb.langs, LangDb.altNames.leftOuter)(
-	  (l, a) => 
-	    select((l.enName, a.map(_.name)) )
-    	  on(l.id === a.map(_.langId)))
-	names.foreach( n => println(n._1 + " => " + n._2.getOrElse("null")))
-
-	val map = names.filter( n => n._2 != None).map( n => (n._1, n._2.get)).toMap
-	map("Swedish") mustEqual "svenska"
-	map must notContain("English")
-      }
-    }
-
-    "find altNames for given Lang.enName (1: 'shortcuts')" in {
+    "with with example search: list altNames for a given Lang.enName (1: 'shortcuts')" in {
       import org.squeryl.PrimitiveTypeMode._
 
       inTransaction {
@@ -106,12 +66,12 @@ class ArtikelKodTest extends Specification {
 	  l => 
     	    where(l.enName === "Finnish")
 	    select(l)).single
-	lang.altNames.foreach(a => println(a.name))
+	//lang.altNames.foreach(a => println(a.name))
 	lang.altNames.map(_.name).toSet mustEqual Set("finska","suomi")
       }
     }
 
-    "find altNames for given Lang.enName (2: id join)" in {
+    "with with example search: list altNames for a given Lang.enName (2: id join)" in {
       import org.squeryl.PrimitiveTypeMode._
 
       inTransaction {
@@ -127,7 +87,7 @@ class ArtikelKodTest extends Specification {
       }
     }
 
-    "find altNames for given Lang.enName (3: left join)" in {
+    "with with example search: list altNames for a given Lang.enName (3: left join)" in {
       import org.squeryl.PrimitiveTypeMode._
 
       inTransaction {
@@ -142,6 +102,50 @@ class ArtikelKodTest extends Specification {
 	altNames.flatten.toSet mustEqual Set("finska","suomi")
       }
     }
+
+    "with with example search: list enName, altName pairs" in {
+      import org.squeryl.PrimitiveTypeMode._
+
+//       SELECT LANG.ENNAME, ALT_NAMES.NAME
+//         FROM LANG 
+//         LEFT JOIN ALT_NAMES ON (ALT_NAMES.LANGID = LANG.ID)
+
+      inTransaction {
+     	val session = Session.currentSession
+
+	val names = join(LangDb.langs, LangDb.altNames.leftOuter)(
+	  (l, a) => 
+	    select((l.enName, a.map(_.name)) )
+    	  on(l.id === a.map(_.langId)))
+	//names.foreach( n => println(n._1 + " => " + n._2.getOrElse("null")))
+
+	val map = names.filter( n => n._2 != None).map( n => (n._1, n._2.get)).toMap
+	map("Swedish") mustEqual "svenska"
+	map must notContain("English")
+      }
+    }
+
+    "with with example search: compute total number of speakers per language" in {
+      import org.squeryl.PrimitiveTypeMode._
+      inTransaction {
+     	val session = Session.currentSession
+
+	val query = join(LangDb.langs, 
+			 LangDb.langsAndCountries) (
+	  (lang,l2c) =>
+	    groupBy(lang.enName)
+	  compute(sum(l2c.speakers))
+	  orderBy(sum(l2c.speakers))
+	  on(lang.id === l2c.langId)
+	)
+	val map = query.map( n => (n.key, n.measures)).toMap
+	map("Swedish") mustEqual Some(9300000)
+	map("Dutch") mustEqual None
+	// -> Swedish => Some(9300000)
+	// -> Dutch => None
+      }
+    }
+
 
   }
 }

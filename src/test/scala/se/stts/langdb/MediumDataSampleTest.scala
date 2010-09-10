@@ -212,7 +212,7 @@ class MediumDataSampleTest extends Specification {
 	    where(l.id === lac.langId)
 	  compute(sum(lac.speakers))
 	).single.measures.get
-	println(nSpeakers)
+	//println(nSpeakers)
 	nSpeakers mustEqual 101860000
       }
     }
