@@ -34,14 +34,14 @@ class ArtikelKodTest extends Specification {
       inTransaction {
      	val session = Session.currentSession
 
-	val names = from(LangDb.langs)(l => select(l.enName)).toList
+	val names = from(LangDb.langs)(l => select(l.enName))
 	// -> Swedish
 	// -> English
 	// -> Finnish
 	// -> ...
-	names(0) mustEqual "Swedish"
-	names(1) mustEqual "English"
-	names(2) mustEqual "Finnish"
+	names.toList(0) mustEqual "Swedish"
+	names.toList(1) mustEqual "Finnish"
+	names.toList(2) mustEqual "English"
       }
     }
 
