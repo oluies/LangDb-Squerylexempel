@@ -82,7 +82,7 @@ object LangDb extends Schema {
   // Association tables (for many-to-many mappings between two tables)
   //
   // langAndCountry is a ManyToManyRelation, it extends Table[LangAndCountry]
-  
+  // TA BORT FRAN KODRUTA  
   val langsAndCountries = 
     manyToManyRelation(langs, countries).via[LangAndCountry]((l, c, lic) => 
       (l.id === lic.langId, c.id === lic.countryId))

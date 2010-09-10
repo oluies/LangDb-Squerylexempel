@@ -162,20 +162,23 @@ class ArtikelKodTest extends Specification {
       inTransaction {
      	val session = Session.currentSession
 
+	// Metod för att plocka ut indoeuropeiska språk
 	def indoLangs(langs: Queryable[Lang]): Query[Lang] = {
-	  join(langs, LangDb.langsAndFamilies.leftOuter, LangDb.families)(
-	    (l, laf, f) => 
-	      where(f.name === "Indo-European")
+	  join(langs, LangDb.families,
+	       LangDb.langsAndFamilies.leftOuter)(
+	    (l, f, laf) => where(f.name === "Indo-European")
 	    select(l)
-	    on(l.id === laf.map(_.langId), f.id === laf.map(_.familyId)))
+	    on(l.id === laf.map(_.langId), 
+	       f.id === laf.map(_.familyId)))
 	}
 	
+	// Alla indoeuropeiska språk
 	val langs = indoLangs(LangDb.langs)
+	// Antal talare indoeuropeiska språk
 	val nSpeakers = from(langs, LangDb.langsAndCountries)(
-	  (l, lac) => 
-	    where(l.id === lac.langId)
-	  compute(sum(lac.speakers))
-	).single.measures.get
+	    (l, lac) => where(l.id === lac.langId)
+	    compute(sum(lac.speakers))
+	  ).single.measures.get
 	//println(nSpeakers)
 	nSpeakers mustEqual 101860000
       }
