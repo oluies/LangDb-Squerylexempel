@@ -88,7 +88,6 @@ class ArtikelKodTest extends Specification {
 	    select(a.name))
 	// -> finska
 	// -> suomi
-	println(altNames.toSet == Set("finska","suomi"))
 	altNames.toSet mustEqual Set("finska","suomi")
       }
     }
@@ -149,11 +148,19 @@ class ArtikelKodTest extends Specification {
 	  orderBy(sum(l2c.speakers))
 	  on(lang.id === l2c.langId)
 	)
+	// -> Swedish => Some(9300000)
+	// -> Dutch => None
 	val map = query.map( n => (n.key, n.measures)).toMap
 	map("Swedish") mustEqual Some(9300000)
 	map("Dutch") mustEqual None
-	// -> Swedish => Some(9300000)
-	// -> Dutch => None
+      }
+    }
+
+    "with with example search: [TODO REGEXP SEARCH]" in {
+      import org.squeryl.PrimitiveTypeMode._
+      inTransaction {
+     	val session = Session.currentSession
+
       }
     }
 

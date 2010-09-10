@@ -35,7 +35,7 @@ object MediumDataSample {
     // langCodeOfAltName is not used for the moment
     ("swe" -> Map(("swe" -> AltName("svenska")))),
     ("fin" -> Map(("swe" -> AltName("finska")),
-                  ("fin" -> AltName("soumi")))),
+                  ("fin" -> AltName("suomi")))),
     ("spa" -> Map(("spa" -> AltName("español")))),
     ("cat" -> Map(("cat" -> AltName("català")))),
     ("fra" -> Map(("fra" -> AltName("français")),
