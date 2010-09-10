@@ -129,7 +129,7 @@ class MediumDataSampleTest extends Specification {
        }
     }
 
-     "be able to sum up the total number of speakers per language (stored in db as speakers per lang+country) @TODO@ Ful mappning Some(Int) => Int" in {
+     "be able to sum up the total number of speakers per language (stored in db as speakers per lang+country)" in {
        import org.squeryl.PrimitiveTypeMode._
 
        
@@ -172,50 +172,22 @@ class MediumDataSampleTest extends Specification {
 
     "be able to nuke some of its citizens" in {
       import org.squeryl.PrimitiveTypeMode._
-      try{
-      inTransaction{
-        
-        val kaLang = LangDb.altNames.where(_.name.regex("ka$"))
-        kaLang.size must be greaterThan 0
-        
-        LangDb.altNames.delete(kaLang)
 
-        //for(ka <- kaLang) {
-        //  LangDb.altNames.deleteWhere(an => an.id === ka.id)
-        //}
-        
-        val ish2 = from(LangDb.altNames)(an => where( an.name.regex("ka$")) select(an))
-        ish2.size mustEqual 0
-        // TRYING A ROLLBACK HERE
-        error("DARN")
-      }
+      try{
+	inTransaction{
+          
+          val kaLangs = LangDb.altNames.where(_.name.regex("ka$"))
+          kaLangs.size must be greaterThan 0
+          
+          LangDb.altNames.delete(kaLangs)
+	  
+          val kaLangs2 = LangDb.altNames.where(_.name.regex("ka$"))//from(LangDb.altNames)(an => where( an.name.regex("ka$")) select(an))
+          kaLangs2.size mustEqual 0
+          // TRYING A ROLLBACK HERE TO AVOID COMMITTING THE CHANGES
+          error("DARN")
+	}
       } catch {case _ =>}
     } 
-
-    "be able to perform searches on a query [Queryklassen]" in {
-      import org.squeryl.PrimitiveTypeMode._
-
-      inTransaction {
-     	val session = Session.currentSession
-
-	def indoLangs(langs: Queryable[Lang]): Query[Lang] = {
-	  join(langs, LangDb.langsAndFamilies.leftOuter, LangDb.families)(
-	    (l, laf, f) => 
-	      where(f.name === "Indo-European")
-	    select(l)
-	    on(l.id === laf.map(_.langId), f.id === laf.map(_.familyId)))
-	}
-	
-	val langs = indoLangs(LangDb.langs)
-	val nSpeakers = from(langs, LangDb.langsAndCountries)(
-	  (l, lac) => 
-	    where(l.id === lac.langId)
-	  compute(sum(lac.speakers))
-	).single.measures.get
-	//println(nSpeakers)
-	nSpeakers mustEqual 101860000
-      }
-    }
 
 
 

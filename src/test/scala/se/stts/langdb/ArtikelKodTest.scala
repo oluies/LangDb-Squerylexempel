@@ -10,9 +10,9 @@ class ArtikelKodTest extends Specification {
   System.setErr(new java.io.PrintStream(System.err, true, "UTF-8"));
 
   
-  "A LangDb instance" should {
+  "A LangDb" should {
 
-    "be initialized without errors" in {
+    "ska instansieras utan fel" in {
       import org.squeryl.PrimitiveTypeMode._
       val dbPath = System.getProperty("java.io.tmpdir") + System.getProperty("file.separator") + "ArtikelKodTest"
       Class.forName("org.h2.Driver")
@@ -28,7 +28,7 @@ class ArtikelKodTest extends Specification {
     }
 
 
-    "with example search: list all language names (enName)" in {
+    "sökexempel: lista alla språknamn (enName)" in {
       import org.squeryl.PrimitiveTypeMode._
 
       inTransaction {
@@ -45,7 +45,7 @@ class ArtikelKodTest extends Specification {
       }
     }
 
-    "with example search: count number of languages" in {
+    "sökexempel: summera antalet språk" in {
       import org.squeryl.PrimitiveTypeMode._
 
       inTransaction {
@@ -59,7 +59,7 @@ class ArtikelKodTest extends Specification {
       }
     }
 
-    "with example search: list altNames for a given Lang.enName (1: 'shortcuts')" in {
+    "sökexempel: lista altNames för ett givet språks enName (1: 'genväg')" in {
       import org.squeryl.PrimitiveTypeMode._
 
       inTransaction {
@@ -75,7 +75,7 @@ class ArtikelKodTest extends Specification {
       }
     }
 
-    "with example search: list altNames for a given Lang.enName (2: id join)" in {
+    "sökexempel: lista altNames för ett givet språks enName (2: id join)" in {
       import org.squeryl.PrimitiveTypeMode._
 
       inTransaction {
@@ -92,7 +92,7 @@ class ArtikelKodTest extends Specification {
       }
     }
 
-    "with example search: list altNames for a given Lang.enName (3: left join)" in {
+    "sökexempel: lista altNames för ett givet språks enName (3: left join)" in {
       import org.squeryl.PrimitiveTypeMode._
 
       inTransaction {
@@ -109,7 +109,7 @@ class ArtikelKodTest extends Specification {
       }
     }
 
-    "with example search: list enName, altName pairs" in {
+    "sökexempel: lista par av enName - altName" in {
       import org.squeryl.PrimitiveTypeMode._
 
 //       SELECT LANG.ENNAME, ALT_NAMES.NAME
@@ -135,7 +135,7 @@ class ArtikelKodTest extends Specification {
       }
     }
 
-    "with example search: compute total number of speakers per language" in {
+    "sökexempel: beräkna totalt antal talare per språk" in {
       import org.squeryl.PrimitiveTypeMode._
       inTransaction {
      	val session = Session.currentSession
@@ -156,11 +156,42 @@ class ArtikelKodTest extends Specification {
       }
     }
 
-    "with example search: [TODO REGEXP SEARCH]" in {
+    "sökexempel: sökning i ett sökresultat [avsnitt: Queryklassen/Kodruta 2]" in {
       import org.squeryl.PrimitiveTypeMode._
+
       inTransaction {
      	val session = Session.currentSession
 
+	def indoLangs(langs: Queryable[Lang]): Query[Lang] = {
+	  join(langs, LangDb.langsAndFamilies.leftOuter, LangDb.families)(
+	    (l, laf, f) => 
+	      where(f.name === "Indo-European")
+	    select(l)
+	    on(l.id === laf.map(_.langId), f.id === laf.map(_.familyId)))
+	}
+	
+	val langs = indoLangs(LangDb.langs)
+	val nSpeakers = from(langs, LangDb.langsAndCountries)(
+	  (l, lac) => 
+	    where(l.id === lac.langId)
+	  compute(sum(lac.speakers))
+	).single.measures.get
+	//println(nSpeakers)
+	nSpeakers mustEqual 101860000
+      }
+    }
+
+    "sökexempel: regexp och delete [avsnitt: Transaktioner]" in {
+      import org.squeryl.PrimitiveTypeMode._
+
+      inTransaction {
+     	val session = Session.currentSession
+
+	val alts = 
+	  LangDb.altNames.where(
+	    _.name.regex("ka$") )
+	LangDb.altNames.delete(alts)
+	true mustEqual true
       }
     }
 
