@@ -124,10 +124,10 @@ class ArtikelKodTest extends Specification {
 	    select((l.enName, a.map(_.name)) )
     	  on(l.id === a.map(_.langId)))
 
-	// -> Swedish => svenska
-	// -> English => n/a
-	// -> Finnish => finska
-	// -> Finnish => suomi
+	// -> Swedish, svenska
+	// -> English, n/a
+	// -> Finnish, finska
+	// -> Finnish, suomi
 	//...
 	val map = names.filter( n => n._2 != None).map( n => (n._1, n._2.get)).toMap
 	map("Swedish") mustEqual "svenska"
