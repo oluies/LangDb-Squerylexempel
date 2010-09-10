@@ -156,13 +156,13 @@ class ArtikelKodTest extends Specification {
       }
     }
 
-    "with with example search: [TODO REGEXP SEARCH]" in {
-      import org.squeryl.PrimitiveTypeMode._
-      inTransaction {
-     	val session = Session.currentSession
+    // "with with example search: [TODO REGEXP SEARCH]" in {
+    //   import org.squeryl.PrimitiveTypeMode._
+    //   inTransaction {
+    //  	val session = Session.currentSession
 
-      }
-    }
+    //   }
+    // }
 
 
   }
