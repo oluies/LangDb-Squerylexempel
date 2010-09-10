@@ -28,7 +28,7 @@ class ArtikelKodTest extends Specification {
     }
 
 
-    "with with example search: list all language names (enName)" in {
+    "with example search: list all language names (enName)" in {
       import org.squeryl.PrimitiveTypeMode._
 
       inTransaction {
@@ -45,7 +45,7 @@ class ArtikelKodTest extends Specification {
       }
     }
 
-    "with with example search: count number of languages" in {
+    "with example search: count number of languages" in {
       import org.squeryl.PrimitiveTypeMode._
 
       inTransaction {
@@ -59,7 +59,7 @@ class ArtikelKodTest extends Specification {
       }
     }
 
-    "with with example search: list altNames for a given Lang.enName (1: 'shortcuts')" in {
+    "with example search: list altNames for a given Lang.enName (1: 'shortcuts')" in {
       import org.squeryl.PrimitiveTypeMode._
 
       inTransaction {
@@ -75,7 +75,7 @@ class ArtikelKodTest extends Specification {
       }
     }
 
-    "with with example search: list altNames for a given Lang.enName (2: id join)" in {
+    "with example search: list altNames for a given Lang.enName (2: id join)" in {
       import org.squeryl.PrimitiveTypeMode._
 
       inTransaction {
@@ -92,7 +92,7 @@ class ArtikelKodTest extends Specification {
       }
     }
 
-    "with with example search: list altNames for a given Lang.enName (3: left join)" in {
+    "with example search: list altNames for a given Lang.enName (3: left join)" in {
       import org.squeryl.PrimitiveTypeMode._
 
       inTransaction {
@@ -109,7 +109,7 @@ class ArtikelKodTest extends Specification {
       }
     }
 
-    "with with example search: list enName, altName pairs" in {
+    "with example search: list enName, altName pairs" in {
       import org.squeryl.PrimitiveTypeMode._
 
 //       SELECT LANG.ENNAME, ALT_NAMES.NAME
@@ -135,7 +135,7 @@ class ArtikelKodTest extends Specification {
       }
     }
 
-    "with with example search: compute total number of speakers per language" in {
+    "with example search: compute total number of speakers per language" in {
       import org.squeryl.PrimitiveTypeMode._
       inTransaction {
      	val session = Session.currentSession
@@ -156,13 +156,13 @@ class ArtikelKodTest extends Specification {
       }
     }
 
-    // "with with example search: [TODO REGEXP SEARCH]" in {
-    //   import org.squeryl.PrimitiveTypeMode._
-    //   inTransaction {
-    //  	val session = Session.currentSession
+    "with example search: [TODO REGEXP SEARCH]" in {
+      import org.squeryl.PrimitiveTypeMode._
+      inTransaction {
+     	val session = Session.currentSession
 
-    //   }
-    // }
+      }
+    }
 
 
   }
