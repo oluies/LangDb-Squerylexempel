@@ -39,9 +39,9 @@ class ArtikelKodTest extends Specification {
 	// -> English
 	// -> Finnish
 	// -> ...
-	names.toList(0) mustEqual "Swedish"
-	names.toList(1) mustEqual "Finnish"
-	names.toList(2) mustEqual "English"
+	names.toSet must contain("Swedish")
+	names.toSet must contain("English")
+	names.toSet must contain("Finnish")
       }
     }
 
@@ -88,6 +88,7 @@ class ArtikelKodTest extends Specification {
 	    select(a.name))
 	// -> finska
 	// -> suomi
+	println(altNames.toSet == Set("finska","suomi"))
 	altNames.toSet mustEqual Set("finska","suomi")
       }
     }
