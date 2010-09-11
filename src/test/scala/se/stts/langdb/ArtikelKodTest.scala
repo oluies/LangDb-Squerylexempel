@@ -176,9 +176,32 @@ class ArtikelKodTest extends Specification {
 	val map = query.map( n => (n.key, n.measures)).toMap
 	map("Swedish") mustEqual Some(9300000)
 	map("Dutch") mustEqual None
+	println(map)
       }
     }
 
+    "sök+update: ändra alt name för ett språk (partial update)" in {
+      import org.squeryl.PrimitiveTypeMode._
+      inTransaction {
+     	val session = Session.currentSession
+	
+	update(LangDb.altNames)(a =>
+	  where(a.name === "soumi")
+          set(a.name := "suomi"))
+      }
+    }
+
+ //    "sök+update: ändra alt name för ett språk (full update)" in {
+//       import org.squeryl.PrimitiveTypeMode._
+//       inTransaction {
+//      	val session = Session.currentSession
+	
+// 	val altName1 = LangDb.altNames.where(a => a.name === "suomi").single
+// 	val altName2: AltName = altName1.copy(name="soumi") { id=altName1.id }
+// 	LangDb.altNames.update(altName2)
+//       }
+//     }
+// 
     "sökexempel: sökning i ett sökresultat [avsnitt: Queryklassen/Kodruta 2]" in {
       import org.squeryl.PrimitiveTypeMode._
 
@@ -197,7 +220,7 @@ class ArtikelKodTest extends Specification {
 	
 	// Alla indoeuropeiska språk
 	val langs = indoLangs(LangDb.langs)
-	// Antal talare indoeuropeiska språk
+	// Antal talare av indoeuropeiska språk
 	val nSpeakers = from(langs, LangDb.langsAndCountries)(
 	    (l, lac) => where(l.id === lac.langId)
 	    compute(sum(lac.speakers))
