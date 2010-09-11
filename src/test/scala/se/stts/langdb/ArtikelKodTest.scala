@@ -28,6 +28,19 @@ class ArtikelKodTest extends Specification {
     }
 
 
+    "skapa klasser" in {
+      import org.squeryl.PrimitiveTypeMode._
+      // case class Lang_ArtikelKodTest(iso: String, 
+      // 				     enName: String, 
+      // 				     cBlock: Option[String]) 
+      //      extends AutoId
+      // case class AltName_ArtikelKodTest(name: String,
+      // 					langId: Int = 0) 
+      //      extends AutoId
+      true equals true
+    }
+
+
     "sökexempel: lista alla språknamn (enName)" in {
       import org.squeryl.PrimitiveTypeMode._
 
@@ -71,7 +84,7 @@ class ArtikelKodTest extends Specification {
 	    select(l)).single
 	// -> finska
 	// -> suomi
-	lang.altNames.map(_.name).toSet mustEqual Set("finska","suomi")
+	lang.aNames.map(_.name).toSet mustEqual Set("finska","suomi")
       }
     }
 

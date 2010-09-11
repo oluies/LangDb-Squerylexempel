@@ -212,7 +212,7 @@ object MediumDataSample {
 	for ( (isoLangOfLanguage, altNamesForLang) <- altNames ) {
 	  for ( altName <- altNamesForLang.valuesIterator.map(_.name).toList.distinct ) {
 	    val lang = LangDb.langs.where(l => l.iso === isoLangOfLanguage).single
-	    lang.altNames.associate(AltName(altName))
+	    lang.aNames.associate(AltName(altName))
 	  }
 	}
 
@@ -239,7 +239,7 @@ object MediumDataSample {
 	  val lang = LangDb.langs.where(l => l.iso === isoLang).single
 	  val country = LangDb.countries.where(c => c.iso === isoCountry).single
  	  val l2c = lang.countries.associate(country)
-
+	  
  	  update(LangDb.langsAndCountries)(item =>
  	    where(item.langId === l2c.langId and
  	  	  item.countryId === l2c.countryId)

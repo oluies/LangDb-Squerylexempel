@@ -1,6 +1,7 @@
 package se.stts.langdb // TA BORT FRAN KODRUTA
 
 import org.squeryl._ // TA BORT FRAN KODRUTA
+import org.squeryl.dsl._ // TA BORT FRAN KODRUTA
 import dsl.CompositeKey2 // TA BORT FRAN KODRUTA
 import annotations._ // TA BORT FRAN KODRUTA
 
@@ -27,13 +28,13 @@ case class Lang(iso: String, enName: String, cBlock: Option[String]) extends Aut
   // default constructor necessary (this is a Squeryl thing):
   def this() = this("", "", Some("")) // TA BORT FRAN KODRUTA
   // TA BORT FRAN KODRUTA
-  lazy val altNames = LangDb.langToAltNames.left(this)
+  lazy val aNames: OneToMany[AltName] = LangDb.langToAltNames.left(this)
   lazy val families = LangDb.langsAndFamilies.left(this)
   lazy val countries = LangDb.langsAndCountries.left(this)
 }
 
 case class AltName(name: String, langId: Int = 0) extends AutoId {
-  lazy val enLang = LangDb.langToAltNames.right(this).single
+  lazy val enLang: Lang = LangDb.langToAltNames.right(this).single
 }
 
 

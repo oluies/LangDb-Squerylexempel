@@ -14,8 +14,7 @@ class MediumDataSampleTest extends Specification {
 
     "be initialized without errors" in {
       val dbPath = System.getProperty("java.io.tmpdir") + System.getProperty("file.separator") + "MediumDataSample"
-      MediumDataSample.createDb(new java.io.File(dbPath))
-      true mustEqual true
+      MediumDataSample.createDb(new java.io.File(dbPath)) mustNot throwAn[Exception]
     }
 
     "have the correct number of languages" in {
@@ -56,7 +55,7 @@ class MediumDataSampleTest extends Specification {
       }
     }
 
-    "be able to look up lang.enName => lang.altNames" in {
+    "be able to look up lang.enName => lang.aNames" in {
       import org.squeryl.PrimitiveTypeMode._
 
       inTransaction {
@@ -64,7 +63,7 @@ class MediumDataSampleTest extends Specification {
     	val langs = from(LangDb.langs)(l => 
     	  select(l) 
     	  orderBy(l.enName)).map(lang => 
-    	     (lang.enName -> lang.altNames.map(_.name)))
+    	     (lang.enName -> lang.aNames.map(_.name)))
     	langs.size mustEqual(MediumDataSample.langs.size)
       }
     }
@@ -79,7 +78,7 @@ class MediumDataSampleTest extends Specification {
     	  select(l) 
     	  orderBy(l.enName)).single
 
-    	lang.altNames.size mustEqual 0
+    	lang.aNames.size mustEqual 0
       }
     }
 
@@ -92,7 +91,7 @@ class MediumDataSampleTest extends Specification {
     	  where(l.enName === "French")
     	  select(l) 
     	  orderBy(l.enName)).
-    	single.altNames.map(_.name)
+    	single.aNames.map(_.name)
 
     	altNames.size mustEqual 2
     	altNames mustContain "français"
