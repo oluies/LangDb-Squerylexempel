@@ -28,17 +28,15 @@ class ArtikelKodTest extends Specification {
     }
 
 
-    "skapa klasser" in {
-      import org.squeryl.PrimitiveTypeMode._
-      // case class Lang_ArtikelKodTest(iso: String, 
-      // 				     enName: String, 
-      // 				     cBlock: Option[String]) 
-      //      extends AutoId
-      // case class AltName_ArtikelKodTest(name: String,
-      // 					langId: Int = 0) 
-      //      extends AutoId
-      true equals true
-    }
+    // "skapa klasser" in {
+    //   case class Lang_ArtikelKodTest(iso: String, 
+    //   				     enName: String, 
+    //   				     cBlock: Option[String]) 
+    //        extends AutoId
+    //   case class AltName_ArtikelKodTest(name: String,
+    //   					langId: Int = 0) 
+    //        extends AutoId
+    // }
 
 
     "sökexempel: lista alla språknamn (enName)" in {
@@ -48,6 +46,7 @@ class ArtikelKodTest extends Specification {
      	val session = Session.currentSession
 
 	val names = from(LangDb.langs)(l => select(l.enName))
+	//names.foreach(println)
 	// -> Swedish
 	// -> English
 	// -> Finnish
@@ -56,6 +55,13 @@ class ArtikelKodTest extends Specification {
 	names.toSet must contain("English")
 	names.toSet must contain("Finnish")
       }
+    }
+
+
+    "sökexempel: foreach syntax" in {
+      val numbers = List(1,2,3)
+      //numbers.foreach(number => print(number))
+      true mustEqual true
     }
 
     "sökexempel: summera antalet språk" in {
@@ -67,6 +73,8 @@ class ArtikelKodTest extends Specification {
 	val nLangs = from(LangDb.langs)(l => 
 	  compute(count)
         ).single.measures
+
+	//println(nLangs)
 	// -> 22
 	nLangs mustEqual 22
       }
@@ -134,17 +142,19 @@ class ArtikelKodTest extends Specification {
 
 	val names = join(LangDb.langs, LangDb.altNames.leftOuter)(
 	  (l, a) => 
-	    select((l.enName, a.map(_.name)) )
+	    select(l.enName, a.map(_.name))
     	  on(l.id === a.map(_.langId)))
 
-	// -> Swedish, svenska
-	// -> English, n/a
-	// -> Finnish, finska
-	// -> Finnish, suomi
-	//...
-	val map = names.filter( n => n._2 != None).map( n => (n._1, n._2.get)).toMap
-	map("Swedish") mustEqual "svenska"
-	map must notContain("English")
+	// -> Swedish, Some(svenska)
+	// -> English, None
+	// -> Finnish, Some(finska)
+	// -> Finnish, Some(suomi)
+	// -> ...
+
+	//val map = names.filter( n => n._2 != None).map( n => (n._1, n._2.get)).toMap
+	val map = names.map(n => (n._1, n._2)).toMap
+	map("Swedish") mustEqual Some("svenska")
+	map("English") mustEqual None
       }
     }
 
