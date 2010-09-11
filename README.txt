@@ -1,9 +1,14 @@
-# LangDb
+LangDb
 
 Detta är ett litet exempel som illustrerar hur det går till när man använder Squeryl (http://squeryl.org).
 
-För att köra testdatabasen, följ stegen nedan, eller lär mer här
+Instruktioner för att testa exempeldatabasen finns här:
+
 http://github.com/NikolajLindberg/LangDb-Squerylexempel/wiki/LangDb-Squerylexempel
+
+
+Snabb sammanfattning, följ stegen nedan:
+
 
 * Se till att du har en modern JVM installerad (http://java.com)
 * Installera SBT (http://code.google.com/p/simple-build-tool/)
@@ -14,7 +19,4 @@ http://github.com/NikolajLindberg/LangDb-Squerylexempel/wiki/LangDb-Squerylexemp
 * Starta sbt
 * Skriv "update" (nu hämtar sbt de externa bibliotek som krävs)
 * Skriv "test" (exempelprojektet kompileras och testerna körs)
-
-
-
 
