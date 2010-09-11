@@ -2,12 +2,18 @@
 
 Detta är ett litet exempel som illustrerar hur det går till när man använder Squeryl (http://squeryl.org).
 
-Detta är ett testrepository i dubbel bemärkelse. Ett: jag lär mig git/github/, två: här finns filer som är ett litet test av Squerylbiblioteket. 
+För att köra testdatabasen, följ dessa steg:
 
-Än så länge inget av intresse för någon, med andra ord.
+* Se till att du har en modern JVM installerad (http://java.com)
+* Installera SBT (http://code.google.com/p/simple-build-tool/)
+* Installer git (http://git-scm.com/)
+* Checka ut testprojektet:
+  git clone git://github.com/NikolajLindberg/LangDb-Squerylexempel.git
+* Ställ dig i katalogen LangDb-Squerylexempel
+* Starta sbt
+* Skriv "update" (nu hämtar sbt de externa bibliotek som krävs)
+* Skriv "test" (exempelprojektet kompileras och testerna körs)
 
-====================================================================
 
-git clone git://github.com/NikolajLindberg/LangDb-Squerylexempel.git
 
 
