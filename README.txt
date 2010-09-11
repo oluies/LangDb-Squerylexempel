@@ -12,7 +12,7 @@ Snabb sammanfattning, följ stegen nedan:
 
 * Se till att du har en modern JVM installerad (http://java.com)
 * Installera SBT (http://code.google.com/p/simple-build-tool/)
-* Installer git (http://git-scm.com/)
+* Installera git (http://git-scm.com/)
 * Checka ut testprojektet:
   git clone git://github.com/NikolajLindberg/LangDb-Squerylexempel.git
 * Ställ dig i katalogen LangDb-Squerylexempel
