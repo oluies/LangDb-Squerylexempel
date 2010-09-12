@@ -94,10 +94,10 @@ object LangDb extends Schema {
 
   val langToAltNames = 
     oneToManyRelation(langs, altNames).via((l, a) => l.id === a.langId)
-
+  // TA BORT FRAN KODRUTA
   // Makes it possible to drop (delete) the whole db. Use wisely.
   override def drop = super.drop // TA BORT FRAN KODRUTA
-
+  // TA BORT FRAN KODRUTA
   override def create = { // TA BORT FRAN KODRUTA
     super.create // TA BORT FRAN KODRUTA
     postCreate // TA BORT FRAN KODRUTA
