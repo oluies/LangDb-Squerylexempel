@@ -1,6 +1,6 @@
 # LangDb
 
-Detta är ett litet exempel som illustrerar hur det går till när man använder [Squeryl](http://squeryl.org).
+Detta är ett litet exempel som illustrerar hur man använder [Squeryl](http://squeryl.org).
 
 Instruktioner för att testa exempeldatabasen finns här:
 
