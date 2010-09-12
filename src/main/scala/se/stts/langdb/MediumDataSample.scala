@@ -30,7 +30,7 @@ object MediumDataSample {
     Lang("fiu", "Kväni", Some("LATIN"))
 )
 
-  val altNames = Map(
+  private val altNames = Map(
     // langCodeOfLanguage -> langCodeOfAltName -> altName
     // langCodeOfAltName is not used for the moment
     ("swe" -> Map(("swe" -> AltName("svenska")))),
@@ -63,7 +63,7 @@ object MediumDataSample {
 		  ("nno" -> AltName("kvensk"))))
   )
 
-  val langFamilies = Map(
+  private val langFamilies = Map(
     ("swe" -> List("Indo-European", "Germanic", "North Germanic")),
     ("fin" -> List("Uralic", "Finno-Ugric", "Finnic")),
     ("spa" -> List("Indo-European", "Italic", "Romance", "Italo-Western", "Gallo-Iberian", "Ibero-Romance", "West Iberian")),
@@ -88,7 +88,7 @@ object MediumDataSample {
     ("fiu" -> List("Uralic", "Finno-Ugric", "Finnic"))
   )
 
-  val family2iso = langFamilies.valuesIterator.toSet.flatten.map(familyName => 
+  private val family2iso = langFamilies.valuesIterator.toSet.flatten.map(familyName => 
     familyName match {
       case "Afro-Asiatic" => Some(familyName -> "afa")
       case "Indo-European" => Some(familyName -> "ine")
@@ -132,7 +132,7 @@ object MediumDataSample {
     Country("NO", "Norway", Some("Europe"))
   )
 
-  val langsAndCountries = Map(
+  private val langsAndCountries = Map(
     (("swe", "SE") -> LangAndCountry(Some(true), Some(9000000))),
     (("swe", "FI") -> LangAndCountry(Some(true), Some(300000))),
     (("fin", "FI") -> LangAndCountry(Some(true), Some(61000000))),
