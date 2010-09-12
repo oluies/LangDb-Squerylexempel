@@ -9,15 +9,15 @@ Instruktioner för att testa exempeldatabasen finns här:
 ## Snabb sammanfattning, följ stegen nedan:
 
 
-* Se till att du har en modern JVM installerad (http://java.com)
-* Installera SBT (http://code.google.com/p/simple-build-tool/)
-* Installera git (http://git-scm.com/)
+* Se till att du har en modern [JVM](http://java.com) installerad 
+* Installera [SBT](http://code.google.com/p/simple-build-tool/)
+* Installera [git](http://git-scm.com/) (om du vill)
 * Checka ut testprojektet:
   git clone git://github.com/NikolajLindberg/LangDb-Squerylexempel.git
 * Ställ dig i katalogen LangDb-Squerylexempel
-* Starta sbt
-* Skriv "update" (nu hämtar sbt de externa bibliotek som krävs)
-* Skriv "test" (exempelprojektet kompileras och testerna körs)
+* Starta `sbt`
+* Skriv `update` (nu hämtar sbt de externa bibliotek som krävs)
+* Skriv `test` (exempelprojektet kompileras och testerna körs)
 
 ## Bra länkar
 
