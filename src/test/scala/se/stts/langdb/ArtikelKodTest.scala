@@ -162,32 +162,99 @@ class ArtikelKodTest extends Specification {
       import org.squeryl.PrimitiveTypeMode._
       inTransaction {
      	val session = Session.currentSession
-
+	
 	val query = join(LangDb.langs, 
 			 LangDb.langsAndCountries) (
-	  (lang,l2c) =>
-	    groupBy(lang.enName)
-	  compute(sum(l2c.speakers))
-	  orderBy(sum(l2c.speakers))
-	  on(lang.id === l2c.langId)
+	  (l,lc) =>
+	    groupBy(l.enName)
+	  compute(sum(lc.speakers))
+	  orderBy(sum(lc.speakers))
+	  on(l.id === lc.langId)
 	)
 	// -> Swedish => Some(9300000)
 	// -> Dutch => None
 	val map = query.map( n => (n.key, n.measures)).toMap
 	map("Swedish") mustEqual Some(9300000)
 	map("Dutch") mustEqual None
-	println(map)
+	//println(map)
       }
     }
 
-    "sök+update: ändra alt name för ett språk (partial update)" in {
+    "update: ändra alt name för ett språk (partial update)" in {
       import org.squeryl.PrimitiveTypeMode._
       inTransaction {
      	val session = Session.currentSession
 	
-	update(LangDb.altNames)(a =>
-	  where(a.name === "soumi")
-          set(a.name := "suomi"))
+	// introduce spelling error
+	val n1 = update(LangDb.altNames)(a =>
+	  where(a.name === "svenska")
+          set(a.name := "svneska"))
+
+
+	// correct spelling error
+	val n2 = update(LangDb.altNames)(a =>
+	  where(a.name === "svneska")
+          set(a.name := "svenska"))
+
+	val n3 = LangDb.altNames.where(a => a.name === "svenska").size
+
+	n1 mustEqual 1
+	n2 mustEqual 1
+	n3 mustEqual 1
+      }
+    }
+
+    "sök+update: ändra antal talare för ett språk, i ett visst land (partial update)" in {
+      import org.squeryl.PrimitiveTypeMode._
+      inTransaction {
+     	val session = Session.currentSession
+	
+	val lc1 = from(LangDb.langs, 
+		       LangDb.countries, 
+		       LangDb.langsAndCountries)(
+	  (l,c,lc) =>
+	    where(l.enName === "Dutch" and 
+		  c.enName === "Netherlands" and
+		  l.id === lc.langId and
+		  c.id === lc.countryId)
+	  select(lc)).single
+
+	val n1 = update(LangDb.langsAndCountries)(
+	  (lc) =>
+	    where(lc.id === lc1.id)
+          set(lc.speakers := Some(15000000L)))
+
+	val nSpeakers = from(LangDb.langs, 
+		       LangDb.countries, 
+		       LangDb.langsAndCountries)(
+	  (l,c,lc) =>
+	    where(l.enName === "Dutch" and 
+		  c.enName === "Netherlands" and
+		  l.id === lc.langId and
+		  c.id === lc.countryId)
+	  select(lc.speakers)).single
+
+	nSpeakers mustEqual Some(15000000L)
+
+	val n2 = update(LangDb.langsAndCountries)(
+	  (lc) =>
+	    where(lc.id === lc1.id)
+          set(lc.speakers := None))
+
+	n1 mustEqual 1
+	n2 mustEqual 1
+
+	val nSpeakers2 = from(LangDb.langs, 
+		       LangDb.countries, 
+		       LangDb.langsAndCountries)(
+	  (l,c,lc) =>
+	    where(l.enName === "Dutch" and 
+		  c.enName === "Netherlands" and
+		  l.id === lc.langId and
+		  c.id === lc.countryId)
+	  select(lc.speakers)).single
+
+	  nSpeakers2 mustEqual None
       }
     }
 
