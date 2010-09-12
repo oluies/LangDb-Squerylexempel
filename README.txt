@@ -4,8 +4,7 @@ Detta är ett litet exempel som illustrerar hur det går till när man använder
 
 Instruktioner för att testa exempeldatabasen finns här:
 
-http://github.com/NikolajLindberg/LangDb-Squerylexempel/wiki/LangDb-Squerylexempel
-
+http://github.com/NikolajLindberg/LangDb-Squerylexempel/wiki
 
 Snabb sammanfattning, följ stegen nedan:
 
