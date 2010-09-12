@@ -70,7 +70,7 @@ object LangDb extends Schema {
   //
   // Basic data tables
   //
-  val langs = table[Lang]
+  val langs: Table[Lang] = table[Lang]
   val altNames = table[AltName]
   val countries = table[Country]
   val families = table[Family]
