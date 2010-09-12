@@ -19,3 +19,4 @@ Snabb sammanfattning, följ stegen nedan:
 * Skriv "update" (nu hämtar sbt de externa bibliotek som krävs)
 * Skriv "test" (exempelprojektet kompileras och testerna körs)
 
+Missa inte samlingen med länkar: http://github.com/NikolajLindberg/LangDb-Squerylexempel/wiki/L%C3%A4nkar
