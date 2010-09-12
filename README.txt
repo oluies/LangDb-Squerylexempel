@@ -1,12 +1,12 @@
-LangDb
+# LangDb
 
-Detta är ett litet exempel som illustrerar hur det går till när man använder Squeryl (http://squeryl.org).
+Detta är ett litet exempel som illustrerar hur det går till när man använder [Squeryl](http://squeryl.org).
 
 Instruktioner för att testa exempeldatabasen finns här:
 
-http://github.com/NikolajLindberg/LangDb-Squerylexempel/wiki
+[http://github.com/NikolajLindberg/LangDb-Squerylexempel/wiki](http://github.com/NikolajLindberg/LangDb-Squerylexempel/wiki)
 
-Snabb sammanfattning, följ stegen nedan:
+## Snabb sammanfattning, följ stegen nedan:
 
 
 * Se till att du har en modern JVM installerad (http://java.com)
@@ -19,4 +19,6 @@ Snabb sammanfattning, följ stegen nedan:
 * Skriv "update" (nu hämtar sbt de externa bibliotek som krävs)
 * Skriv "test" (exempelprojektet kompileras och testerna körs)
 
-Missa inte samlingen med länkar: http://github.com/NikolajLindberg/LangDb-Squerylexempel/wiki/L%C3%A4nkar
+## Bra länkar
+
+Missa inte samlingen med [länkar](http://github.com/NikolajLindberg/LangDb-Squerylexempel/wiki/L%C3%A4nkar) på wikin.
