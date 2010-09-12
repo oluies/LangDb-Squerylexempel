@@ -28,15 +28,31 @@ class ArtikelKodTest extends Specification {
     }
 
 
-    // "skapa klasser" in {
-    //   case class Lang_ArtikelKodTest(iso: String, 
-    //   				     enName: String, 
-    //   				     cBlock: Option[String]) 
-    //        extends AutoId
-    //   case class AltName_ArtikelKodTest(name: String,
-    //   					langId: Int = 0) 
-    //        extends AutoId
-    // }
+    "befolka databasen" in {
+      import org.squeryl.PrimitiveTypeMode._
+
+      try {
+	inTransaction {
+     	  val session = Session.currentSession
+	  
+	  val swe0 = Lang("xxx", "Swedish",
+			  Some("LATIN"))
+	  val swe = LangDb.langs.insert(swe0)
+	  swe.aNames.associate(
+	    AltName("svenska"))
+
+	  val fam0 = Family("Indo-EuropeanX", 
+			    Some("xxx"))
+	  val fam = LangDb.families.
+	  insert(fam0)
+	  swe.families.associate(fam)
+
+	  error("must generate an error to avoid commit")
+	}
+      }
+      catch { case e => "" }
+      true mustEqual true
+    }
 
 
     "sökexempel: lista alla språknamn (enName)" in {
@@ -86,10 +102,10 @@ class ArtikelKodTest extends Specification {
       inTransaction {
      	val session = Session.currentSession
 
-	val lang = from(LangDb.langs)(
-	  l => 
-    	    where(l.enName === "Finnish")
-	    select(l)).single
+	val lang = from(LangDb.langs)(l => 
+	  where(l.enName === "Finnish")
+        select(l)).single
+	//lang.aNames.foreach(println(_))
 	// -> finska
 	// -> suomi
 	lang.aNames.map(_.name).toSet mustEqual Set("finska","suomi")
@@ -102,11 +118,12 @@ class ArtikelKodTest extends Specification {
       inTransaction {
      	val session = Session.currentSession
 
-	val altNames = from(LangDb.langs, LangDb.altNames)(
+	val altNames = from(LangDb.langs, 
+			    LangDb.altNames)(
 	  (l,a) => 
-    	    where(l.enName === "Finnish" and
-		l.id === a.langId)
-	    select(a.name))
+	    where(l.enName === "Finnish" and
+		  l.id === a.langId)
+	  select(a.name))
 	// -> finska
 	// -> suomi
 	altNames.toSet mustEqual Set("finska","suomi")
@@ -140,10 +157,11 @@ class ArtikelKodTest extends Specification {
       inTransaction {
      	val session = Session.currentSession
 
-	val names = join(LangDb.langs, LangDb.altNames.leftOuter)(
+	val names = join(LangDb.langs, 
+			 LangDb.altNames.leftOuter)(
 	  (l, a) => 
 	    select(l.enName, a.map(_.name))
-    	  on(l.id === a.map(_.langId)))
+	  on(l.id === a.map(_.langId)))
 
 	// -> Swedish, Some(svenska)
 	// -> English, None
@@ -151,7 +169,6 @@ class ArtikelKodTest extends Specification {
 	// -> Finnish, Some(suomi)
 	// -> ...
 
-	//val map = names.filter( n => n._2 != None).map( n => (n._1, n._2.get)).toMap
 	val map = names.map(n => (n._1, n._2)).toMap
 	map("Swedish") mustEqual Some("svenska")
 	map("English") mustEqual None
@@ -171,8 +188,9 @@ class ArtikelKodTest extends Specification {
 	  orderBy(sum(lc.speakers))
 	  on(l.id === lc.langId)
 	)
-	// -> Swedish => Some(9300000)
-	// -> Dutch => None
+	// -> Swedish, Some(9300000)
+	// -> Dutch, None
+	// -> ...
 	val map = query.map( n => (n.key, n.measures)).toMap
 	map("Swedish") mustEqual Some(9300000)
 	map("Dutch") mustEqual None
@@ -287,12 +305,13 @@ class ArtikelKodTest extends Specification {
 	
 	// Alla indoeuropeiska språk
 	val langs = indoLangs(LangDb.langs)
+	
 	// Antal talare av indoeuropeiska språk
 	val nSpeakers = from(langs, LangDb.langsAndCountries)(
-	    (l, lac) => where(l.id === lac.langId)
-	    compute(sum(lac.speakers))
-	  ).single.measures.get
-	//println(nSpeakers)
+	  (l, lac) => where(l.id === lac.langId)
+	  compute(sum(lac.speakers))
+	).single.measures.get
+	// -> 101.860.000
 	nSpeakers mustEqual 101860000
       }
     }
@@ -303,11 +322,14 @@ class ArtikelKodTest extends Specification {
       inTransaction {
      	val session = Session.currentSession
 
-	val alts = 
-	  LangDb.altNames.where(
-	    _.name.regex("ka$") )
+	val alts = LangDb.altNames.where(
+	  _.name.regex("ka$") )
 	LangDb.altNames.delete(alts)
-	true mustEqual true
+
+	val alts2 = from(LangDb.altNames)(a =>
+	  where(a.name regex "ka$")
+          compute(count)).single
+	alts2.measures mustEqual 0
       }
     }
 
