@@ -75,6 +75,16 @@ object LangDb extends Schema {
   val countries = table[Country]
   val families = table[Family]
 
+  on(langs)(l => declare(columns(l.iso) are(unique,indexed)))// TA BORT FRAN KODRUTA
+  on(countries)(c => declare(columns(c.iso) are(unique,indexed)))// TA BORT FRAN KODRUTA
+  on(families)(f => declare(// TA BORT FRAN KODRUTA
+    columns(f.iso) are(unique,indexed),// TA BORT FRAN KODRUTA
+    columns(f.name) are(unique,indexed)// TA BORT FRAN KODRUTA
+  ))// TA BORT FRAN KODRUTA
+  on(altNames)(a => declare(// TA BORT FRAN KODRUTA
+    columns(a.langId, a.name) are(unique, indexed)// TA BORT FRAN KODRUTA
+  ))// TA BORT FRAN KODRUTA
+  // TA BORT FRAN KODRUTA
   //
   // Relations
   //
@@ -97,24 +107,6 @@ object LangDb extends Schema {
   // TA BORT FRAN KODRUTA
   // Makes it possible to drop (delete) the whole db. Use wisely.
   override def drop = super.drop // TA BORT FRAN KODRUTA
-  // TA BORT FRAN KODRUTA
-  override def create = { // TA BORT FRAN KODRUTA
-    super.create // TA BORT FRAN KODRUTA
-    postCreate // TA BORT FRAN KODRUTA
-  } // TA BORT FRAN KODRUTA
-  // TA BORT FRAN KODRUTA
-  def postCreate = { // TA BORT FRAN KODRUTA
-    inTransaction { // TA BORT FRAN KODRUTA
-      val statements = List( // TA BORT FRAN KODRUTA
-	"ALTER TABLE FAMILY ADD UNIQUE (NAME)", // TA BORT FRAN KODRUTA
-	"ALTER TABLE FAMILY ADD UNIQUE (ISO)", // TA BORT FRAN KODRUTA
-	"ALTER TABLE LANG ADD UNIQUE (ISO)", // TA BORT FRAN KODRUTA
-	"ALTER TABLE COUNTRY ADD UNIQUE (ISO)", // TA BORT FRAN KODRUTA
-  	"ALTER TABLE ALTNAME ADD UNIQUE (LANGID, NAME)" // TA BORT FRAN KODRUTA
-      ) // TA BORT FRAN KODRUTA
-      statements.foreach(Session.currentSession.connection.createStatement.execute(_)) // TA BORT FRAN KODRUTA
-    } // TA BORT FRAN KODRUTA
-  } // TA BORT FRAN KODRUTA
 }
 
 
