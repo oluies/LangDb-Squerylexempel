@@ -76,6 +76,7 @@ object LangDb extends Schema {
   val families = table[Family]
 
   on(langs)(l => declare(columns(l.iso) are(unique,indexed)))// TA BORT FRAN KODRUTA
+  // funkar inte: on(langs)(l => declare(l.iso is(unique,indexed)))// TA BORT FRAN KODRUTA
   on(countries)(c => declare(columns(c.iso) are(unique,indexed)))// TA BORT FRAN KODRUTA
   on(families)(f => declare(// TA BORT FRAN KODRUTA
     columns(f.iso) are(unique,indexed),// TA BORT FRAN KODRUTA
