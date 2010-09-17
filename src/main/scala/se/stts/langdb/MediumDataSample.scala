@@ -238,8 +238,10 @@ object MediumDataSample {
 	for ( ((isoLang, isoCountry), l2c0) <- langsAndCountries ) {
 	  val lang = LangDb.langs.where(l => l.iso === isoLang).single
 	  val country = LangDb.countries.where(c => c.iso === isoCountry).single
+
+	  // TODO: associate => assign!
  	  val l2c = lang.countries.associate(country)
-	  
+
  	  update(LangDb.langsAndCountries)(item =>
  	    where(item.langId === l2c.langId and
  	  	  item.countryId === l2c.countryId)
