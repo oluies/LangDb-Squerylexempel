@@ -54,7 +54,7 @@ ligger i "test").
 
 Till koden finns en uppsättning tester, som körs med hjälp av
 [Specs](http://code.google.com/p/specs/). Specs är ett bibliotek för
-enhetstestning (besläktat med exempelvis JUnit).
+enhetstestning (besläktat med exempelvis JUnit). 
 
 Testkoden är intressant, dels för att den visar hur Specs används,
 dels för att den visar hur testdatabasen används.
@@ -64,7 +64,7 @@ dels för att den visar hur testdatabasen används.
 
 SBT är en ett lättanvänt kompileringsverktyg, "Simple Build Tool",
 skrivet i och för Scala. Det är enkelt att använda, men annars det är
-inget "simpelt" över SBT.
+inget "simpelt" över SBT. (_Ant_ kan slänga sig i väggen.)
 
 Engelska installationsanvisningar finns
 [här](http://code.google.com/p/simple-build-tool/wiki/Setup). Det
@@ -107,7 +107,7 @@ grundläggande kommandon.
   källkodsfil ändrats
 * `test-quick` --- kör endast de tester som misslyckades i förra
   körningen
-
+* `doc` --- genererar scaladoc
 
 
 ## Bra länkar
