@@ -152,8 +152,7 @@ object LangDb extends Schema {
   /**
    * 'Constraints' för några tabeller
    */
-  //on(langs)(l => declare(columns(l.iso) are(unique,indexed)))
-  on(langs)(l => declare(l.iso is(unique,indexed))) // funkar inte?
+  on(langs)(l => declare(columns(l.iso) are(unique,indexed)))
   on(countries)(c => declare(columns(c.iso) are(unique,indexed)))
   on(families)(f => declare(
     columns(f.iso) are(unique,indexed),
