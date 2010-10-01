@@ -15,6 +15,7 @@ import org.squeryl.PrimitiveTypeMode._
  * räknas upp automatiskt.
  * <p/>
  * (Scalas 'trait' är ett koncept för att återanvända kod på ett flexibelt sätt.)
+ *
  * @param id Tabellens primärnyckel
  */
 trait AutoId extends KeyedEntity[Int] {
