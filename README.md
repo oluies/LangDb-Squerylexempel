@@ -30,7 +30,7 @@ använder [Squeryl](http://squeryl.org).
 * Skriv `update` (nu hämtar sbt de externa bibliotek som krävs)
 * Skriv `test` (exempelprojektet kompileras och testerna körs)
 
-Om du lyckas med stegen ovan, kan du ge med fördel börja titta på
+Om du lyckas med stegen ovan, kan du med fördel börja titta på
 kodexemplen.
 
 ## Kodexempel
@@ -62,7 +62,7 @@ dels för att den visar hur testdatabasen används.
 
 ## Mer om SBT
 
-SBT är en ett lättanvänt kompileringsverktyg, "Simple Build Tool",
+SBT, "Simple Build Tool", är en ett lättanvänt kompileringsverktyg
 skrivet i och för Scala. Det är enkelt att använda, men annars det är
 inget "simpelt" över SBT. (`Ant` kan slänga sig i väggen.)
 
@@ -109,6 +109,13 @@ grundläggande kommandon.
   körningen
 * `doc` --- genererar scaladoc
 * `clean` --- rensar bort kompilerad kod
+
+### Konfiguration
+
+Det finns två konfigurationsfiler att hålla redan på. Den ena är
+`project/build.properties` och den andra är projektdefinitionen. I
+detta exempel finns projekdefinitionen i
+`project/build/SquerylDemoProject.scala`.
 
 ## Bra länkar
 
