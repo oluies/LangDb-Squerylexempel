@@ -1,6 +1,6 @@
-# LangDb
+# LangDb.scala 
 
-Detta är ett litet exempel som illustrerar hur man använder [Squeryl](http://squeryl.org).
+Kodexempel till squerylartikeln i Datormagazin nummer 11 2010. LangDb.scala är ett litet exempel som illustrerar hur man använder [Squeryl](http://squeryl.org).
 
 Instruktioner för att testa exempeldatabasen finns här:
 
@@ -19,6 +19,10 @@ Instruktioner för att testa exempeldatabasen finns här:
 * Starta `sbt`
 * Skriv `update` (nu hämtar sbt de externa bibliotek som krävs)
 * Skriv `test` (exempelprojektet kompileras och testerna körs)
+
+## Kodexempel
+
+Själva exempeldatabasen finns i `LangDb-Squerylexempel/src/main/scala/se/stts/langdb/LangDb.scala`
 
 ## Bra länkar
 
