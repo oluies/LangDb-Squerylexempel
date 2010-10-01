@@ -126,14 +126,14 @@ En samling länkar, relevanta för exempelprojektet.
 
 ## Webbplatser
 
-* Den viktigaste platsen för Scala: (http://scala-lang.org)
+* Den viktigaste platsen för Scala: [scala-lang.org](http://scala-lang.org)
   * En av flera av Scalas diskussionsgrupper heter [Scala user](http://scala-programming-language.1934581.n4.nabble.com/Scala-User-f1934582.html)
 * [Planet Scala](http://www.planetscala.com/) samlar scalabloggar.
-* Squeryl bor här: (http://squeryl.org)
-    * Squeryls diskussionsgrupp: (http://groups.google.com/group/squeryl?pli=1)
-* Specs är ett scalabibliotek för programtestning [http://code.google.com/p/specs/]
-* Versionshantering med Git [http://git-scm.com/]
-* Databasen H2, som används i exempelprojektet [http://http://h2database.com]
+* Squeryl bor här: [squeryl.org](http://squeryl.org)
+    * Squeryls diskussionsgrupp: [groups.google.com/group/squeryl](http://groups.google.com/group/squeryl?pli=1)
+* [Specs](http://code.google.com/p/specs/) är ett scalabibliotek för programtestning
+* Versionshantering med [Git](http://git-scm.com/)
+* Databasen [H2](http://http://h2database.com), som används i exempelprojektet
 
 ## Läsning
 
@@ -141,14 +141,14 @@ En samling länkar, relevanta för exempelprojektet.
 
 * Beginning Scala (David Pollak)
 * Programming in Scala (Odersky, Spoon och Venners)
-* [Programming Scala|http://programming-scala.labs.oreilly.com/] (Wampler, Payne) <- OBS! Fritt tillgänglig nätversion
+* [Programming Scala](http://programming-scala.labs.oreilly.com/) (Wampler, Payne) <- OBS! Fritt tillgänglig nätversion
 
 ### Text om relationsdatabaser
-Fritt tillgängligt kapitel ur boken Java Database Best Practices: Chapter 2: [Relational Data Architecture|http://oreilly.com/catalog/javadtabp/chapter/index.html]. (En bra översikt och förklaring av relationsdatabaser.)
+Fritt tillgängligt kapitel ur boken Java Database Best Practices: Chapter 2: [Relational Data Architecture](http://oreilly.com/catalog/javadtabp/chapter/index.html). (En bra översikt och förklaring av relationsdatabaser.)
 
 ## Diverse verktyg
 
-* Scalaplugin för Emacs: [Ensime|http://github.com/aemoncannon/ensime]
-* Scalaplugin för NetBeans: [ErlyBird|http://sourceforge.net/projects/erlybird/files/]
-* Scalaplugin för Eclipse: [http://www.scala-ide.org/]
-*  "Simple build tool", [Sbt|http://code.google.com/p/simple-build-tool/], är populärt bland scalaprogrammerare, eftersom det, trots namnet, är så avancerat --- men ändå lättanvänt
+* Scalaplugin för Emacs: [Ensime](http://github.com/aemoncannon/ensime)
+* Scalaplugin för NetBeans: [ErlyBird](http://sourceforge.net/projects/erlybird/files/)
+* Scalaplugin för Eclipse: [scala-ide.org](http://www.scala-ide.org/)
+*  "Simple build tool", [Sbt](http://code.google.com/p/simple-build-tool/), är populärt bland scalaprogrammerare, eftersom det, trots namnet, är så avancerat --- men ändå lättanvänt
