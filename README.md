@@ -25,7 +25,7 @@ använder [Squeryl](http://squeryl.org).
  
 * _Eller_ hämta koden från [Datormagazins
   filarkiv](http://www.datormagazin.se/filer/), och packa upp den
-* Ställ dig i katalogen LangDb-Squerylexempel
+* Ställ dig i katalogen `LangDb-Squerylexempel`
 * Starta `sbt`
 * Skriv `update` (nu hämtar sbt de externa bibliotek som krävs)
 * Skriv `test` (exempelprojektet kompileras och testerna körs)
@@ -64,7 +64,7 @@ dels för att den visar hur testdatabasen används.
 
 SBT är en ett lättanvänt kompileringsverktyg, "Simple Build Tool",
 skrivet i och för Scala. Det är enkelt att använda, men annars det är
-inget "simpelt" över SBT. (_Ant_ kan slänga sig i väggen.)
+inget "simpelt" över SBT. (`Ant` kan slänga sig i väggen.)
 
 Engelska installationsanvisningar finns
 [här](http://code.google.com/p/simple-build-tool/wiki/Setup). Det
@@ -81,7 +81,7 @@ På Linux:
 
 På Windows:
 
-* Skapa en batchfil, `sbt.bat`, och se till att den finns i Windows
+* Skapa en batchfil, `sbt.bat`, och se till att den finns i din
   sökväg. Lägg sbt-jarfilen i samma katalog som batchfilen.
 * Plutta in följande i filen:
 
@@ -108,10 +108,11 @@ grundläggande kommandon.
 * `test-quick` --- kör endast de tester som misslyckades i förra
   körningen
 * `doc` --- genererar scaladoc
-
+* `clean` --- rensar bort kompilerad kod
 
 ## Bra länkar
 
 Missa inte samlingen med
 [länkar](http://github.com/NikolajLindberg/LangDb-Squerylexempel/wiki/L%C3%A4nkar)
 på wikin.
+
