@@ -59,6 +59,7 @@ enhetstestning (besläktat med exempelvis JUnit).
 Testkoden är intressant, dels för att den visar hur Specs används,
 dels för att den visar hur testdatabasen används.
 
+Källkoden till testerna ligger här: `LangDb-Squerylexempel/src/test/scala/se/stts/langdb/`
 
 ## Mer om SBT
 
