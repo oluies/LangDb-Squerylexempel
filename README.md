@@ -119,15 +119,16 @@ Det finns två konfigurationsfiler att hålla redan på. Den ena är
 detta exempel finns projekdefinitionen i
 `project/build/SquerylDemoProject.scala`.
 
+
 # Länkar
 
 En samling länkar, relevanta för exempelprojektet.
 
 ## Webbplatser
 
-* Den viktigaste platsen för Scala: [http://scala-lang.org]
-  * En av flera av Scalas diskussionsgrupper heter [Scala user|http://scala-programming-language.1934581.n4.nabble.com/Scala-User-f1934582.html]
-* Planet Scala samlar scalabloggar: [http://www.planetscala.com/].
+* Den viktigaste platsen för Scala: (http://scala-lang.org)[http://scala-lang.org]
+  * En av flera av Scalas diskussionsgrupper heter (Scala user)[http://scala-programming-language.1934581.n4.nabble.com/Scala-User-f1934582.html]
+* (Planet Scala)[http://www.planetscala.com/] samlar scalabloggar.
 * Squeryl bor här: [http://squeryl.org]
     * Squeryls diskussionsgrupp: [http://groups.google.com/group/squeryl?pli=1]
 * Specs är ett scalabibliotek för programtestning [http://code.google.com/p/specs/]
