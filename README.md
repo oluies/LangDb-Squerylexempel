@@ -94,6 +94,26 @@ På Windows:
   `java -Xmx512M -jar "%SCRIPT_DIR%sbt-launch.jar" %*`
 
 
+### Exempelkommandon
+
+SBT är ett fint verktyg, som kan göra en massa saker. Här följer några
+grundläggande kommandon.
+
+* `update` --- läser och kompilerar projektfilen, och laddar ner de
+  externa bibliotek som eventuellt behövs.
+* `compile` --- kompilerar de Scala- och javafiler som ligger under
+  biblioteket `src`. Kompilerar endast de filer som påverkas av de
+  senaste ändringarna.  
+* `~ compile` --- samma som ovan, men körs automatiskt så fort någon källkodsfil
+  ändrats.
+* `test` --- kompilerar källkoden och kör alla tester
+* `~ test` --- samma som ovan, men körs automatiskt så fort någon
+  källkodsfil ändrats
+* `test-quick` --- kör endast de tester som misslyckades i förra
+  körningen
+
+
+
 ## Bra länkar
 
 Missa inte samlingen med
