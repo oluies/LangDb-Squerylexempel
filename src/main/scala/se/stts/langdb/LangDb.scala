@@ -18,9 +18,6 @@ import org.squeryl.PrimitiveTypeMode._
  * @param id Tabellens primärnyckel
  */
 trait AutoId extends KeyedEntity[Int] {
-  /**
-   * hejsvej?
-   */
   val id: Int = 0
 }
 
