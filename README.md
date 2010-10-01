@@ -4,7 +4,7 @@ Denna fil finns här:
 
 # LangDb.scala 
 
-Kodexempel till squerylartikeln i Datormagazin nummer 11
+Kodexempel till squerylartikeln i Datormagazin nummer 11,
 2010. LangDb.scala är ett litet exempel som illustrerar hur man
 använder [Squeryl](http://squeryl.org).
 
