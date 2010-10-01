@@ -5,18 +5,21 @@ import org.squeryl.dsl._
 import dsl.CompositeKey2
 import annotations._
 
-// Denna importrad ger tillgång till Squeryls 'oneToManyRelation', '===', etc...
+/* Denna importrad ger tillgång till Squeryls 'oneToManyRelation', '===', etc... */
 import org.squeryl.PrimitiveTypeMode._ 
 
 
 /**
- * Scalas 'trait' är ett koncept för att återanvända kod på ett
- * flexibelt sätt. Genom att implementera följande trait, <code>AutoId</code>,
- * skapas en primärnyckel, <code>id</code> av typen Int, som räknas upp automatiskt.
+ * Genom att implementera detta trait, <code>AutoId</code>,
+ * skapas en primärnyckel, <code>id</code> av typen Int, som
+ * räknas upp automatiskt.
+ * <p/>
+ * (Scalas 'trait' är ett koncept för att återanvända kod på ett flexibelt sätt.)
+ * @param id Tabellens primärnyckel
  */
 trait AutoId extends KeyedEntity[Int] {
   /**
-   * @param id Tabellens primärnyckel
+   * hejsvej?
    */
   val id: Int = 0
 }
@@ -88,7 +91,7 @@ case class Country(iso: String, enName: String, area: Option[String]) extends Au
 /**
  * En språkfamilj (indoeuropeiska, germanska, arabiska, etc)
  * @param name Språkfamiljens namn
- * @param iso Språkfamiljens ISO-kod (tre tecken; ISO 639-5)
+ * @param iso Språkfamiljens ISO-kod (tre tecken, ISO 639-5)
  */
 case class Family(name: String, iso: Option[String]) extends AutoId 
 {
@@ -167,16 +170,16 @@ object LangDb extends Schema {
    */
  
   /** 
-   * <code>langsAndCountries</code> är en <code>ManyToManyRelation</code>,
-   * som är av typen <code>Table[LangAndCountry]</code>
+   * <code>langsAndCountries</code> är en <code>ManyToManyRelation</code>
+   * av typen <code>Table[LangAndCountry]</code>
    */
    val langsAndCountries = 
     manyToManyRelation(langs, countries).via[LangAndCountry]((l, c, lic) => 
       (l.id === lic.langId, c.id === lic.countryId))
 
   /** 
-   * <code>langsAndFamilies</code> är en <code>ManyToManyRelation</code>,
-   * som är av typen <code>Table[LangAndFamily]</code>
+   * <code>langsAndFamilies</code> är en <code>ManyToManyRelation</code>
+   * av typen <code>Table[LangAndFamily]</code>
    */
   val langsAndFamilies = 
     manyToManyRelation(langs, families).via[LangAndFamily]((l, f, laf) => 
