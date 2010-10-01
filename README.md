@@ -30,7 +30,7 @@ använder [Squeryl](http://squeryl.org).
 * Skriv `update` (nu hämtar sbt de externa bibliotek som krävs)
 * Skriv `test` (exempelprojektet kompileras och testerna körs)
 
-Om du lyckas med stegen ovan, kan du ge med fördel börja titta på
+Om du lyckas med stegen ovan, kan du med fördel börja titta på
 kodexemplen.
 
 ## Kodexempel
