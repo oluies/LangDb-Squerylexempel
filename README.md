@@ -43,7 +43,7 @@ Själva exempeldatabasen finns i
 `LangDb-Squerylexempel/src/main/scala/se/stts/langdb/LangDb.scala`. Här
 kan du se alla detaljer som inte fanns plats för i artikeln.
 
-## Kodokumentation 
+## Koddokumentation 
 
 Koden är rikligt dokumenterad, och finns genererad med hjälp av
 `scaladoc`.
@@ -78,11 +78,10 @@ batch/skalfil som kör SBT.
 På Linux: 
 
 *  Lägg SBT-jarfilen i ~/bin tillsammans med skriptet `sbt`, som skall ha följande innehåll:
- 
   `java -Xmx512M -jar `dirname $0`/sbt-launch.jar "$@"`
 * Gör skriptet exekverbart: `chmod u+x ~/bin/sbt`
 
-
+På Windows:
 
 ## Bra länkar
 
