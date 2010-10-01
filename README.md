@@ -15,7 +15,7 @@ använder [Squeryl](http://squeryl.org).
  
 * Installera [SBT](http://code.google.com/p/simple-build-tool/). Se "Mer om SBT" nedan.
 
-* Ladda ner projektet
+* Ladda ner projektet:
   * Installera [git](http://git-scm.com/) (om du vill)
       * Checka ut testprojektet: 
         `git clone git://github.com/NikolajLindberg/LangDb-Squerylexempel.git`
