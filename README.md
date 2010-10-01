@@ -14,7 +14,7 @@ använder [Squeryl](http://squeryl.org).
 * Se till att du har en modern [JVM](http://java.com) installerad
  
 * Installera [SBT](http://code.google.com/p/simple-build-tool/). Se
-  [[Mer om SBT|Readme]] "Mer om SBT" nedan.
+  "Mer om SBT" nedan.
 
 * Installera [git](http://git-scm.com/) (om du vill)
 
