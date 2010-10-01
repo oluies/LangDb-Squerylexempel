@@ -108,7 +108,7 @@ grundläggande kommandon.
 * `test-quick` --- kör endast de tester som misslyckades i förra
   körningen
 * `doc` --- genererar scaladoc
-
+* `clean` --- rensar bort kompilerad kod
 
 ## Bra länkar
 
