@@ -62,7 +62,7 @@ dels för att den visar hur testdatabasen används.
 
 ## Mer om SBT
 
-SBT är en ett lättanvänt kompileringsverktyg, "Simple Build Tool",
+SBT, "Simple Build Tool", är en ett lättanvänt kompileringsverktyg
 skrivet i och för Scala. Det är enkelt att använda, men annars det är
 inget "simpelt" över SBT. (`Ant` kan slänga sig i väggen.)
 
