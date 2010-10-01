@@ -24,6 +24,8 @@ import org.squeryl.PrimitiveTypeMode._
  * räknas upp automatiskt.
  *
  * (Scalas 'trait' är ett koncept för att återanvända kod på ett flexibelt sätt.)
+ *
+ * @author Nikolaj Lindberg, Hanna Lindgren
  */
 trait AutoId extends KeyedEntity[Int] {
 
@@ -49,9 +51,11 @@ trait AutoId extends KeyedEntity[Int] {
  * @param cBlock Språkets 'code block' (teckenuppsättning),
  *               till exempel LATIN eller CYRILLIC.
  * 
+ *
+ * @author Nikolaj Lindberg, Hanna Lindgren
  */
 
-/* Notera hur man kan definiera maxlängd (bland annat) på en sträng med hjälp av @Column */
+// Notera hur man kan definiera maxlängd (bland annat) på en sträng med hjälp av @Column 
 case class Lang(@Column(length=3) iso: String, 
 		enName: String, 
 		cBlock: Option[String]) extends AutoId {
@@ -87,6 +91,8 @@ case class Lang(@Column(length=3) iso: String,
  * Alternativa (icke-engelska) namn på språk.
  * @param name Namnet
  * @param langId Språkets databas-id (se <code>Lang</code>)
+ *
+ * @author Nikolaj Lindberg, Hanna Lindgren
  */
 case class AltName(name: String, langId: Int = 0) extends AutoId {
   /**
@@ -101,6 +107,8 @@ case class AltName(name: String, langId: Int = 0) extends AutoId {
  * @param iso Landets ISO-kod (två tecken, ISO 3166-1 alpha 2)
  * @param enName Landets namn
  * @param area Region/världsdel
+ *
+ * @author Nikolaj Lindberg, Hanna Lindgren
  */
 case class Country(@Column(length=2) iso: String, 
 		   enName: String, area: Option[String]) extends AutoId 
@@ -114,6 +122,8 @@ case class Country(@Column(length=2) iso: String,
  * En språkfamilj (indoeuropeiska, germanska, arabiska, etc)
  * @param name Språkfamiljens namn
  * @param iso Språkfamiljens ISO-kod (tre tecken, ISO 639-5)
+ *
+ * @author Nikolaj Lindberg, Hanna Lindgren
  */
 case class Family(name: String, 
 		  @Column(length=3) iso: Option[String]) extends AutoId 
@@ -129,6 +139,8 @@ case class Family(name: String,
  * @param speakers Antalet talare av språket, i aktuellt land
  * @param langId Språkets databas-id
  * @param countryId Landets databas-id
+ *
+ * @author Nikolaj Lindberg, Hanna Lindgren
  */
 case class LangAndCountry(official: Option[Boolean], speakers: Option[Long], 
                           langId: Int = 0, countryId: Int = 0) 
@@ -147,6 +159,8 @@ case class LangAndCountry(official: Option[Boolean], speakers: Option[Long],
  * mellan vilka det råder en <em>många till många</em>-relation.
  * @param langId Språkets databas-id
  * @param familyId Språkfamiljens databas-id
+ *
+ * @author Nikolaj Lindberg, Hanna Lindgren
  */
 case class LangAndFamily(langId: Int = 0, familyId: Int = 0) 
   extends KeyedEntity[CompositeKey2[Int,Int]] {

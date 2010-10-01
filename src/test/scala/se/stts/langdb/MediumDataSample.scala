@@ -3,6 +3,11 @@ package se.stts.langdb
 import org.squeryl._
 import org.squeryl.adapters.H2Adapter
 
+/**
+ * Klass för att läsa in testdata i språkdatabasen
+ * 
+ * @author Nikolaj Lindberg, Hanna Lindgren
+ */
 object MediumDataSample {
 
   /**

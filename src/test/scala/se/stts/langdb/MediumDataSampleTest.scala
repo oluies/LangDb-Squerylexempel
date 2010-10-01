@@ -4,6 +4,11 @@ import org.specs._
 import org.squeryl._
 import org.squeryl.adapters.H2Adapter
 
+/**
+ * Testklass för exempeldatabasen
+ * 
+ * @author Nikolaj Lindberg, Hanna Lindgren
+ */
 class MediumDataSampleTest extends Specification {
 
   System.setOut(new java.io.PrintStream(System.out, true, "UTF-8"));
