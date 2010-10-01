@@ -39,7 +39,7 @@ Själva exempeldatabasen finns i
 `LangDb-Squerylexempel/src/main/scala/se/stts/langdb/LangDb.scala`. Här
 kan du se alla detaljer som inte fanns plats för i artikeln.
 
-## Koddokumentation 
+## Dokumentation 
 
 Koden är rikligt dokumenterad, och finns genererad med hjälp av
 `scaladoc`. Öppna filen XXX i din html-läsare och njut.
