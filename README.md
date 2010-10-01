@@ -13,18 +13,17 @@ använder [Squeryl](http://squeryl.org).
 
 * Se till att du har en modern [JVM](http://java.com) installerad
  
-* Installera [SBT](http://code.google.com/p/simple-build-tool/). Se
-  "Mer om SBT" nedan.
+* Installera [SBT](http://code.google.com/p/simple-build-tool/). Se "Mer om SBT" nedan.
 
-* Installera [git](http://git-scm.com/) (om du vill)
+* Ladda ner projektet
+  * Installera [git](http://git-scm.com/) (om du vill)
+      * Checka ut testprojektet: 
+        `git clone git://github.com/NikolajLindberg/LangDb-Squerylexempel.git`
 
-    * Checka ut testprojektet: 
-      `git clone git://github.com/NikolajLindberg/LangDb-Squerylexempel.git`
-
-* _Eller_ ladda ner koden här XXX, och packa upp den
+  * _Eller_ ladda ner koden här XXX, och packa upp den
  
-* _Eller_ hämta koden från [Datormagazins
-  filarkiv](http://www.datormagazin.se/filer/), och packa upp den
+  * _Eller_ hämta koden från [Datormagazins filarkiv](http://www.datormagazin.se/filer/), och packa upp den
+
 * Ställ dig i katalogen `LangDb-Squerylexempel`
 * Starta `sbt`
 * Skriv `update` (nu hämtar sbt de externa bibliotek som krävs)
