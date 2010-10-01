@@ -46,7 +46,7 @@ trait AutoId extends KeyedEntity[Int] {
  * <li><code>toString</code></li>
  * </ul>
  * 
- * @param iso Språkets ISO-kod (tre tecken, ISO 639-2)
+ * @param iso Språkets ISO-kod (tre tecken, ISO 639-2, gemener)
  * @param enName Språkets engelska namn
  * @param cBlock Språkets 'code block' (teckenuppsättning),
  *               till exempel LATIN eller CYRILLIC.
@@ -104,7 +104,7 @@ case class AltName(name: String, langId: Int = 0) extends AutoId {
 
 /**
  * Ett land.
- * @param iso Landets ISO-kod (två tecken, ISO 3166-1 alpha 2)
+ * @param iso Landets ISO-kod (två tecken, ISO 3166-1 alpha 2, versaler)
  * @param enName Landets namn
  * @param area Region/världsdel
  *
@@ -121,7 +121,7 @@ case class Country(@Column(length=2) iso: String,
 /**
  * En språkfamilj (indoeuropeiska, germanska, arabiska, etc)
  * @param name Språkfamiljens namn
- * @param iso Språkfamiljens ISO-kod (tre tecken, ISO 639-5)
+ * @param iso Språkfamiljens ISO-kod (tre tecken, ISO 639-5, gemener)
  *
  * @author Nikolaj Lindberg, Hanna Lindgren
  */
