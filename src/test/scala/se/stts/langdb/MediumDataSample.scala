@@ -4,7 +4,10 @@ import org.squeryl._
 import org.squeryl.adapters.H2Adapter
 
 object MediumDataSample {
-  
+
+  /**
+   * De språk som ska stoppas in i testdatabasen
+   */
   val langs = Seq(
     Lang("swe", "Swedish", Some("LATIN")),
     Lang("fin", "Finnish", Some("LATIN")),
@@ -29,69 +32,38 @@ object MediumDataSample {
     Lang("nno", "Norwegian Nynorsk", Some("LATIN")),
     Lang("fiu", "Kväni", Some("LATIN")))
 
+  /**
+   * Koppling mellan språk och 'altName':
+   * Språkkod (ISO) -> Lista på alternativa namn
+   */
   private val altNames = Map(
-    ("swe" -> Seq(AltName("svenska"))),
-    ("fin" -> Seq(AltName("finska"),
-                  AltName("suomi"))),
-    ("spa" -> Seq(AltName("español"))),
-    ("cat" -> Seq(AltName("català"))),
-    ("fra" -> Seq(AltName("français"),
-                  AltName("franska"))),
-    ("rus" -> Seq(AltName("русский"))),
-    ("bul" -> Seq(AltName("български"))),
-    ("ara" -> Seq(AltName("العربية"))),
-    ("zho" -> Seq(AltName("中文"))),
-    ("afr" -> Seq(AltName("Afrikaans"))),
-    ("zul" -> Seq(AltName("Zulu"))),
-    ("xho" -> Seq(AltName("Xhosa"))),
-    ("deu" -> Seq(AltName("Deutsch"))),
-    ("ell" -> Seq(AltName("Ελληνικά"))),
-    ("nld" -> Seq(AltName("Nederlands"))),
-    ("nob" -> Seq(AltName("bokmål"))),
-    ("nno" -> Seq(AltName("nynorsk"))),
-    ("sma" -> Seq(AltName("sydsamiska"))),
-    ("sme" -> Seq(AltName("nordsamiska"),
-		  AltName("davvisámegiella"))),
-    ("smj" -> Seq(AltName("lulesamiska"),
-		  AltName("julevsábme"))),
-    ("fiu" -> Seq(AltName("kvääni"),
-		  AltName("kvänska"),
-		  AltName("kvensk"),
-		  AltName("kvensk"))))
+    ("swe" -> Seq("svenska")),
+    ("fin" -> Seq("finska", "suomi")),
+    ("spa" -> Seq("español")),
+    ("cat" -> Seq("català")),
+    ("fra" -> Seq("français", "franska")),
+    ("rus" -> Seq("русский")),
+    ("bul" -> Seq("български")),
+    ("ara" -> Seq("العربية")),
+    ("zho" -> Seq("中文")),
+    ("afr" -> Seq("Afrikaans")),
+    ("zul" -> Seq("Zulu")),
+    ("xho" -> Seq("Xhosa")),
+    ("deu" -> Seq("Deutsch")),
+    ("ell" -> Seq("Ελληνικά")),
+    ("nld" -> Seq("Nederlands")),
+    ("nob" -> Seq("bokmål")),
+    ("nno" -> Seq("nynorsk")),
+    ("sma" -> Seq("sydsamiska")),
+    ("sme" -> Seq("nordsamiska", "davvisámegiella")),
+    ("smj" -> Seq("lulesamiska", "julevsábme")),
+    ("fiu" -> Seq("kvääni", "kvänska", "kvensk")))
 
-  private val altNamesOLD = Map(
-    // langCodeOfLanguage -> langCodeOfAltName -> altName
-    // langCodeOfAltName is not used for the moment
-    ("swe" -> Map(("swe" -> AltName("svenska")))),
-    ("fin" -> Map(("swe" -> AltName("finska")),
-                  ("fin" -> AltName("suomi")))),
-    ("spa" -> Map(("spa" -> AltName("español")))),
-    ("cat" -> Map(("cat" -> AltName("català")))),
-    ("fra" -> Map(("fra" -> AltName("français")),
-                  ("swe" -> AltName("franska")))),
-    ("rus" -> Map(("rus" -> AltName("русский")))),
-    ("bul" -> Map(("bul" -> AltName("български")))),
-    ("ara" -> Map(("ara" -> AltName("العربية")))),
-    ("zho" -> Map(("zho" -> AltName("中文")))),
-    ("afr" -> Map(("afr" -> AltName("Afrikaans")))),
-    ("zul" -> Map(("zul" -> AltName("Zulu")))),
-    ("xho" -> Map(("xho" -> AltName("Xhosa")))),
-    ("deu" -> Map(("deu" -> AltName("Deutsch")))),
-    ("ell" -> Map(("ell" -> AltName("Ελληνικά")))),
-    ("nld" -> Map(("nld" -> AltName("Nederlands")))),
-    ("nob" -> Map(("nob" -> AltName("bokmål")))),
-    ("nno" -> Map(("nno" -> AltName("nynorsk")))),
-    ("sma" -> Map(("swe" -> AltName("sydsamiska")))),
-    ("sme" -> Map(("swe" -> AltName("nordsamiska")),
-		  ("sme" -> AltName("davvisámegiella")))),
-    ("smj" -> Map(("swe" -> AltName("lulesamiska")),
-		  ("smj" -> AltName("julevsábme")))),
-    ("fiu" -> Map(("fiu" -> AltName("kvääni")),
-		  ("swe" -> AltName("kvänska")),
-		  ("nob" -> AltName("kvensk")),
-		  ("nno" -> AltName("kvensk"))))
-  )
-
+  /**
+   * Koppling mellan språk och språkfamilj:
+   * Språkkod (ISO) -> Namn på språkfamiljer
+   * 
+   */
   private val langFamilies = Map(
     ("swe" -> Seq("Indo-European", "Germanic", "North Germanic")),
     ("fin" -> Seq("Uralic", "Finno-Ugric", "Finnic")),
@@ -116,6 +88,9 @@ object MediumDataSample {
     ("nno" -> Seq("Indo-European", "Germanic", "North Germanic")),
     ("fiu" -> Seq("Uralic", "Finno-Ugric", "Finnic")))
 
+  /**
+   * Koppling mellan namn på språkfamiljer och deras ISO-koder.
+   */
   private val family2iso = langFamilies.valuesIterator.toSet.flatten.map(familyName => 
     familyName match {
       case "Afro-Asiatic" => Some(familyName -> "afa")
@@ -133,6 +108,9 @@ object MediumDataSample {
     }
   ).flatten.toMap
 
+  /**
+   * De länder som ska stoppas in i testdatabasen
+   */
   val countries = Seq(
     Country("SE", "Sweden", Some("Europe")),
     Country("FI", "Finland", Some("Europe")),
@@ -160,6 +138,11 @@ object MediumDataSample {
     Country("NO", "Norway", Some("Europe"))
   )
 
+
+  /**
+   * Koppling mellan språk och länder:
+   * Språkkod (ISO) -> Landskod (ISO)
+   */
   private val langsAndCountries = Map(
     (("swe", "SE") -> LangAndCountry(Some(true), Some(9000000))),
     (("swe", "FI") -> LangAndCountry(Some(true), Some(300000))),
@@ -211,16 +194,16 @@ object MediumDataSample {
 
 
   /**
-   Creates a sample database located at the given path
+   * Skapar en testdatabas
+   * @param dbPath Filen där databasen ska skapas
    */
   def createDb(dbPath: java.io.File): Unit = {
     
-    // Load H2 JDBC driver
+    /* Ladda drivrutiner för H2:s databasmotor */
     Class.forName("org.h2.Driver")
     
-    // A Squeryl session corresponds to a JDBC connection 
+    /* Här skapas en Squeryl-session (motsvarar en JDBC connection) */
     def session = Session.create(java.sql.DriverManager.getConnection("jdbc:h2:"+ dbPath +";AUTO_SERVER=TRUE"), new H2Adapter)
-    // SessionFactory must be assigned a function for creating a new session
     SessionFactory.concreteFactory = Some(()=> session)
 
     import org.squeryl.PrimitiveTypeMode._
@@ -238,7 +221,7 @@ object MediumDataSample {
 
 	// LANG-ALT NAME ASSOCIATIONS
 	for ( (isoLangOfLanguage, altNamesForLang) <- altNames ) {
-	  for ( altName <- altNamesForLang.map(_.name).toSeq.distinct ) {
+	  for ( altName <- altNamesForLang ) {
 	    val lang = LangDb.langs.where(l => l.iso === isoLangOfLanguage).single
 	    lang.aNames.associate(AltName(altName))
 	  }
