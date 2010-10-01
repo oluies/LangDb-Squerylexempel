@@ -25,7 +25,7 @@ trait AutoId extends KeyedEntity[Int] {
 /**
  * En 'case-klass' som representerar ett språk.
  *
- * 'case' ger en klass lite extra funktionalitet. Några exempel:
+ * Scalas 'case-klass' ger lite extra funktionalitet . Några exempel:
  * <ul>
  * <li><code>equals</code> och <code>hashCode</code></li>
  * <li>getters/setters</li>
@@ -42,7 +42,7 @@ trait AutoId extends KeyedEntity[Int] {
 case class Lang(iso: String, enName: String, cBlock: Option[String]) extends AutoId {
 
   /** Om konstruktorn tar 'Option'-parametrar, behövs en extra
-   konstruktor utan argument (Squeryl behöver detta, tills vidare): */
+   konstruktor utan argument (Squeryl behöver detta, tills vidare) */
    def this() = this("", "", Some(""))
  
   /**
