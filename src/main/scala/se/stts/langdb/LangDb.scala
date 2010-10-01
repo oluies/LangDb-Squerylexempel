@@ -8,19 +8,28 @@ import annotations._
 /* Denna importrad ger tillgång till Squeryls 'oneToManyRelation', '===', etc... */
 import org.squeryl.PrimitiveTypeMode._ 
 
+/**************************************************************************
+ * Detta är den fullständiga koden till artikeln om Squeryl i Datormagazin
+ * nummer 11, 2010. LangDb.scala är ett litet exempel som illustrerar hur
+ * man använder Squeryl. Se även testklasserna, MediumDataSample.scala,
+ * MediumDataSampleTest.scala och ArtikelKodTest.scala
+ * 
+ *                av Nikolaj Lindberg och Hanna Lindgren
+ **************************************************************************
+ */
 
 /**
  * Genom att implementera detta trait, <code>AutoId</code>,
  * skapas en primärnyckel, <code>id</code> av typen Int, som
  * räknas upp automatiskt.
- * <p/>
- * (Scalas 'trait' är ett koncept för att återanvända kod på ett flexibelt sätt.)
  *
- * @param id Tabellens primärnyckel
+ * (Scalas 'trait' är ett koncept för att återanvända kod på ett flexibelt sätt.)
  */
 trait AutoId extends KeyedEntity[Int] {
 
-  /* Tabellens primärnyckel*/
+  /**
+   * Tabellens primärnyckel
+   */
   val id: Int = 0
 }
 
@@ -28,7 +37,7 @@ trait AutoId extends KeyedEntity[Int] {
 /**
  * En 'case-klass' som representerar ett språk.
  *
- * Scalas 'case-klass' ger lite extra funktionalitet . Några exempel:
+ * Scalas 'case-klass' ger lite extra funktionalitet. Några exempel:
  * <ul>
  * <li><code>equals</code> och <code>hashCode</code></li>
  * <li>getters/setters</li>
@@ -42,12 +51,17 @@ trait AutoId extends KeyedEntity[Int] {
  * 
  */
 
+/* Notera hur man kan definiera maxlängd (bland annat) på en sträng med hjälp av @Column */
 case class Lang(@Column(length=3) iso: String, 
 		enName: String, 
 		cBlock: Option[String]) extends AutoId {
 
-  /** Om konstruktorn tar 'Option'-parametrar, behövs en extra
-   konstruktor utan argument (Squeryl behöver detta) */
+  /**
+   * I Scala definieras hjälpkonstruktorer med hjälp av <code>def this()</code>.
+   * 
+   * Om standard-konstruktorn tar 'Option'-parametrar, behöver Squeryl en
+   * extra konstruktor utan argument. Detta kommer att försvinna i framtida
+   * versioner av Squeryl. */
    def this() = this("", "", Some(""))
  
   /**
@@ -109,7 +123,7 @@ case class Family(name: String,
 }
 
 /**
- * Kopplingstabell mellan <code>Lang</code> och <code>Språk</code>,
+ * Associationstabell mellan <code>Lang</code> och <code>Country</code>,
  * mellan vilka det råder en <em>många till många</em>-relation.
  * @param official Anger om språket har officiell status i aktuellt land
  * @param speakers Antalet talare av språket, i aktuellt land
@@ -123,12 +137,13 @@ case class LangAndCountry(official: Option[Boolean], speakers: Option[Long],
   /** Extra konstruktor för Squeryl */
   def this() = this(Some(false), Some(0), 0, 0)
 
-   /** Sammansatt databasnyckel */
+   /** Sammansatt databasnyckel - <code>countryId</code> och
+    * <code>langId</code> är tillsammans unika i tabellen. */
   def id = compositeKey(countryId, langId)
 }
 
 /**
- * Kopplingstabell mellan <code>Lang</code> och <code>Family</code>,
+ * Associationstabell mellan <code>Lang</code> och <code>Family</code>,
  * mellan vilka det råder en <em>många till många</em>-relation.
  * @param langId Språkets databas-id
  * @param familyId Språkfamiljens databas-id
@@ -142,6 +157,11 @@ case class LangAndFamily(langId: Int = 0, familyId: Int = 0)
 
 /**
  * Schema för databasen. Här deklareras databasens tabeller och relationerna dem emellan.
+ *
+ * Ett 'object' i Scala är en 'singleton', och används ungefär
+ * som man i Java använder statiska metoder.
+ * 
+ * @author Nikolaj Lindberg, Hanna Lindgren
  */
 object LangDb extends Schema {
  
@@ -178,7 +198,7 @@ object LangDb extends Schema {
     columns(a.langId, a.name) are(unique, indexed)
   ))
  
-  /* Relationer/kopplingstabeller */
+  /* Relationer/associationstabeller */
  
   /** 
    * <code>langsAndCountries</code> är en <code>ManyToManyRelation</code>

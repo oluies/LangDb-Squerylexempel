@@ -5,7 +5,7 @@ import org.squeryl.adapters.H2Adapter
 
 object MediumDataSample {
   
-  val langs = List(
+  val langs = Seq(
     Lang("swe", "Swedish", Some("LATIN")),
     Lang("fin", "Finnish", Some("LATIN")),
     Lang("eng", "English", Some("LATIN")),
@@ -27,10 +27,39 @@ object MediumDataSample {
     Lang("smj", "Lule Sami", Some("LATIN")),
     Lang("nob", "Norwegian Bokmål", Some("LATIN")),
     Lang("nno", "Norwegian Nynorsk", Some("LATIN")),
-    Lang("fiu", "Kväni", Some("LATIN"))
-)
+    Lang("fiu", "Kväni", Some("LATIN")))
 
   private val altNames = Map(
+    ("swe" -> Seq(AltName("svenska"))),
+    ("fin" -> Seq(AltName("finska"),
+                  AltName("suomi"))),
+    ("spa" -> Seq(AltName("español"))),
+    ("cat" -> Seq(AltName("català"))),
+    ("fra" -> Seq(AltName("français"),
+                  AltName("franska"))),
+    ("rus" -> Seq(AltName("русский"))),
+    ("bul" -> Seq(AltName("български"))),
+    ("ara" -> Seq(AltName("العربية"))),
+    ("zho" -> Seq(AltName("中文"))),
+    ("afr" -> Seq(AltName("Afrikaans"))),
+    ("zul" -> Seq(AltName("Zulu"))),
+    ("xho" -> Seq(AltName("Xhosa"))),
+    ("deu" -> Seq(AltName("Deutsch"))),
+    ("ell" -> Seq(AltName("Ελληνικά"))),
+    ("nld" -> Seq(AltName("Nederlands"))),
+    ("nob" -> Seq(AltName("bokmål"))),
+    ("nno" -> Seq(AltName("nynorsk"))),
+    ("sma" -> Seq(AltName("sydsamiska"))),
+    ("sme" -> Seq(AltName("nordsamiska"),
+		  AltName("davvisámegiella"))),
+    ("smj" -> Seq(AltName("lulesamiska"),
+		  AltName("julevsábme"))),
+    ("fiu" -> Seq(AltName("kvääni"),
+		  AltName("kvänska"),
+		  AltName("kvensk"),
+		  AltName("kvensk"))))
+
+  private val altNamesOLD = Map(
     // langCodeOfLanguage -> langCodeOfAltName -> altName
     // langCodeOfAltName is not used for the moment
     ("swe" -> Map(("swe" -> AltName("svenska")))),
@@ -64,29 +93,28 @@ object MediumDataSample {
   )
 
   private val langFamilies = Map(
-    ("swe" -> List("Indo-European", "Germanic", "North Germanic")),
-    ("fin" -> List("Uralic", "Finno-Ugric", "Finnic")),
-    ("spa" -> List("Indo-European", "Italic", "Romance", "Italo-Western", "Gallo-Iberian", "Ibero-Romance", "West Iberian")),
-    ("cat" -> List("Indo-European", "Romance")),
-    ("eng" -> List("Indo-European", "Germanic", "West Germanic", "Anglo-Frisian", "English")),
-    ("fra" -> List("Indo-European", "Italic", "Romance")),
-    ("rus" -> List("Indo-European", "Slavic", "East Slavic")),
-    ("bul" -> List("Indo-European", "Slavic", "South Slavic")),
-    ("ara" -> List("Afro-Asiatic", "Semitic")),
-    ("zho" -> List("Sino-Tibetan", "Chinese")),
-    ("afr" -> List("Indo-European", "Germanic", "West Germanic")),
-    ("zul" -> List("Niger-Congo", "Benue-Congo", "Bantu")),
-    ("xho" -> List("Niger-Congo", "Benue-Congo", "Bantu")),
-    ("deu" -> List("Indo-European", "Germanic", "West Germanic")),
-    ("ell" -> List("Indo-European", "Greek")),
-    ("nld" -> List("Indo-European", "Germanic", "West Germanic")),
-    ("sma" -> List("Uralic", "Finno-Ugric", "Sami")),
-    ("sme" -> List("Uralic", "Finno-Ugric", "Sami")),
-    ("smj" -> List("Uralic", "Finno-Ugric", "Sami")),
-    ("nob" -> List("Indo-European", "Germanic", "North Germanic")),
-    ("nno" -> List("Indo-European", "Germanic", "North Germanic")),
-    ("fiu" -> List("Uralic", "Finno-Ugric", "Finnic"))
-  )
+    ("swe" -> Seq("Indo-European", "Germanic", "North Germanic")),
+    ("fin" -> Seq("Uralic", "Finno-Ugric", "Finnic")),
+    ("spa" -> Seq("Indo-European", "Italic", "Romance", "Italo-Western", "Gallo-Iberian", "Ibero-Romance", "West Iberian")),
+    ("cat" -> Seq("Indo-European", "Romance")),
+    ("eng" -> Seq("Indo-European", "Germanic", "West Germanic", "Anglo-Frisian", "English")),
+    ("fra" -> Seq("Indo-European", "Italic", "Romance")),
+    ("rus" -> Seq("Indo-European", "Slavic", "East Slavic")),
+    ("bul" -> Seq("Indo-European", "Slavic", "South Slavic")),
+    ("ara" -> Seq("Afro-Asiatic", "Semitic")),
+    ("zho" -> Seq("Sino-Tibetan", "Chinese")),
+    ("afr" -> Seq("Indo-European", "Germanic", "West Germanic")),
+    ("zul" -> Seq("Niger-Congo", "Benue-Congo", "Bantu")),
+    ("xho" -> Seq("Niger-Congo", "Benue-Congo", "Bantu")),
+    ("deu" -> Seq("Indo-European", "Germanic", "West Germanic")),
+    ("ell" -> Seq("Indo-European", "Greek")),
+    ("nld" -> Seq("Indo-European", "Germanic", "West Germanic")),
+    ("sma" -> Seq("Uralic", "Finno-Ugric", "Sami")),
+    ("sme" -> Seq("Uralic", "Finno-Ugric", "Sami")),
+    ("smj" -> Seq("Uralic", "Finno-Ugric", "Sami")),
+    ("nob" -> Seq("Indo-European", "Germanic", "North Germanic")),
+    ("nno" -> Seq("Indo-European", "Germanic", "North Germanic")),
+    ("fiu" -> Seq("Uralic", "Finno-Ugric", "Finnic")))
 
   private val family2iso = langFamilies.valuesIterator.toSet.flatten.map(familyName => 
     familyName match {
@@ -105,7 +133,7 @@ object MediumDataSample {
     }
   ).flatten.toMap
 
-  val countries = List(
+  val countries = Seq(
     Country("SE", "Sweden", Some("Europe")),
     Country("FI", "Finland", Some("Europe")),
     Country("RU", "Russia", Some("Europe")),
@@ -210,7 +238,7 @@ object MediumDataSample {
 
 	// LANG-ALT NAME ASSOCIATIONS
 	for ( (isoLangOfLanguage, altNamesForLang) <- altNames ) {
-	  for ( altName <- altNamesForLang.valuesIterator.map(_.name).toList.distinct ) {
+	  for ( altName <- altNamesForLang.map(_.name).toSeq.distinct ) {
 	    val lang = LangDb.langs.where(l => l.iso === isoLangOfLanguage).single
 	    lang.aNames.associate(AltName(altName))
 	  }
