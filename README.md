@@ -87,7 +87,9 @@ På Windows:
 * Skapa en batchfil, `sbt.bat`, och se till att den finns i Windows
   sökväg. Lägg sbt-jarfilen i samma katalog som batchfilen.
 * Plutta in följande i filen:
+
   `set SCRIPT_DIR=%~dp0
+
   java -Xmx512M -jar "%SCRIPT_DIR%sbt-launch.jar" %*`
 
 
