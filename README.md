@@ -18,8 +18,8 @@ använder [Squeryl](http://squeryl.org).
 
 * Installera [git](http://git-scm.com/) (om du vill)
 
-    * Checka ut testprojektet: `git clone
-          git://github.com/NikolajLindberg/LangDb-Squerylexempel.git`
+    * Checka ut testprojektet: 
+      `git clone git://github.com/NikolajLindberg/LangDb-Squerylexempel.git`
 
 * _Eller_ ladda ner koden här XXX, och packa upp den
  
@@ -76,7 +76,7 @@ På Linux:
 * Lägg SBT-jarfilen i `~/bin` tillsammans med skriptet `sbt`, som skall
    ha följande innehåll:
 
-  `java -Xmx512M -jar `dirname $0`/sbt-launch.jar "$@"`
+  `java -Xmx512M -jar `dirname $0`/sbt-launch-0.7.4.jar "$@"`
 * Gör skriptet exekverbart: `chmod u+x ~/bin/sbt`
 
 På Windows:
