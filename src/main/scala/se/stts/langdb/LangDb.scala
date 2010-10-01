@@ -51,17 +51,20 @@ case class Lang(@Column(length=3) iso: String,
    def this() = this("", "", Some(""))
  
   /**
-   * Koppling till språkets 'alternativa' namn via <em>en till många</em>-relationen <code>langToAltNames</code>
+   * Koppling till språkets 'alternativa' namn via <em>en till många</em>-relationen
+   * <code>langToAltNames</code>
    */
   lazy val aNames: OneToMany[AltName] = LangDb.langToAltNames.left(this)
 
   /**
-   * Koppling till språkfamiljer namn via <em>många till många</em>-relationen <code>langsAndFamilies</code>
+   * Koppling till språkfamiljer namn via <em>många till många</em>-relationen
+   * <code>langsAndFamilies</code>
    */
   lazy val families = LangDb.langsAndFamilies.left(this)
 
   /**
-   * Koppling till länder via <em>många till många</em>-relationen <code>langsAndCountries</code>
+   * Koppling till länder via <em>många till många</em>-relationen
+   * <code>langsAndCountries</code>
    */
   lazy val countries = LangDb.langsAndCountries.left(this)
 }
@@ -73,7 +76,8 @@ case class Lang(@Column(length=3) iso: String,
  */
 case class AltName(name: String, langId: Int = 0) extends AutoId {
   /**
-   * Koppling till språket via <em>en till många</em>-relationen <code>langToAltNames</code>
+   * Koppling till språket via <em>en till många</em>-relationen
+   * <code>langToAltNames</code>
    */ 
   lazy val enLang: Lang = LangDb.langToAltNames.right(this).single
 }
@@ -105,7 +109,8 @@ case class Family(name: String,
 }
 
 /**
- * Kopplingstabell mellan <code>Lang</code> och <code>Språk</code>, mellan vilka det råder en <em>många till många</em>-relation.
+ * Kopplingstabell mellan <code>Lang</code> och <code>Språk</code>,
+ * mellan vilka det råder en <em>många till många</em>-relation.
  * @param official Anger om språket har officiell status i aktuellt land
  * @param speakers Antalet talare av språket, i aktuellt land
  * @param langId Språkets databas-id
@@ -123,7 +128,8 @@ case class LangAndCountry(official: Option[Boolean], speakers: Option[Long],
 }
 
 /**
- * Kopplingstabell mellan <code>Lang</code> och <code>Family</code>, mellan vilka det råder en <em>många till många</em>-relation.
+ * Kopplingstabell mellan <code>Lang</code> och <code>Family</code>,
+ * mellan vilka det råder en <em>många till många</em>-relation.
  * @param langId Språkets databas-id
  * @param familyId Språkfamiljens databas-id
  */
@@ -139,9 +145,7 @@ case class LangAndFamily(langId: Int = 0, familyId: Int = 0)
  */
 object LangDb extends Schema {
  
-  /**
-   * Grundläggande tabeller
-   */
+  /* Grundläggande tabeller */
 
   /**
    * Tabell för <code>Lang</code>
@@ -163,9 +167,7 @@ object LangDb extends Schema {
    */
   val families = table[Family]
 
-  /**
-   * 'Constraints' för några tabeller
-   */
+  /* 'Constraints' för några tabeller */
   on(langs)(l => declare(columns(l.iso) are(unique,indexed)))
   on(countries)(c => declare(columns(c.iso) are(unique,indexed)))
   on(families)(f => declare(
@@ -176,9 +178,7 @@ object LangDb extends Schema {
     columns(a.langId, a.name) are(unique, indexed)
   ))
  
-  /**
-   * Relationer/kopplingstabeller
-   */
+  /* Relationer/kopplingstabeller */
  
   /** 
    * <code>langsAndCountries</code> är en <code>ManyToManyRelation</code>
