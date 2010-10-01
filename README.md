@@ -77,11 +77,19 @@ batch/skalfil som kör SBT.
 
 På Linux: 
 
-*  Lägg SBT-jarfilen i ~/bin tillsammans med skriptet `sbt`, som skall ha följande innehåll:
+* Lägg SBT-jarfilen i ~/bin tillsammans med skriptet `sbt`, som skall
+   ha följande innehåll:
   `java -Xmx512M -jar `dirname $0`/sbt-launch.jar "$@"`
 * Gör skriptet exekverbart: `chmod u+x ~/bin/sbt`
 
 På Windows:
+
+* Skapa en batchfil, `sbt.bat`, och se till att den finns i Windows
+  sökväg. Lägg sbt-jarfilen i samma katalog som batchfilen.
+* Plutta in följande i filen:
+  `set SCRIPT_DIR=%~dp0
+  java -Xmx512M -jar "%SCRIPT_DIR%sbt-launch.jar" %*`
+
 
 ## Bra länkar
 
