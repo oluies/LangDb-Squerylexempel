@@ -150,10 +150,6 @@ class ArtikelKodTest extends Specification {
     "sökexempel: lista par av enName - altName" in {
       import org.squeryl.PrimitiveTypeMode._
 
-//       SELECT LANG.ENNAME, ALT_NAMES.NAME
-//         FROM LANG 
-//         LEFT JOIN ALT_NAMES ON (ALT_NAMES.LANGID = LANG.ID)
-
       inTransaction {
      	val session = Session.currentSession
 
@@ -203,13 +199,12 @@ class ArtikelKodTest extends Specification {
       inTransaction {
      	val session = Session.currentSession
 	
-	// introduce spelling error
+	// fejkar ett stavfel
 	val n1 = update(LangDb.altNames)(a =>
 	  where(a.name === "svenska")
           set(a.name := "svneska"))
 
-
-	// correct spelling error
+	// rättar ett stavfel
 	val n2 = update(LangDb.altNames)(a =>
 	  where(a.name === "svneska")
           set(a.name := "svenska"))
@@ -276,17 +271,6 @@ class ArtikelKodTest extends Specification {
       }
     }
 
- //    "sök+update: ändra alt name för ett språk (full update)" in {
-//       import org.squeryl.PrimitiveTypeMode._
-//       inTransaction {
-//      	val session = Session.currentSession
-	
-// 	val altName1 = LangDb.altNames.where(a => a.name === "suomi").single
-// 	val altName2: AltName = altName1.copy(name="soumi") { id=altName1.id }
-// 	LangDb.altNames.update(altName2)
-//       }
-//     }
-// 
     "sökexempel: sökning i ett sökresultat [avsnitt: Queryklassen/Kodruta 2]" in {
       import org.squeryl.PrimitiveTypeMode._
 

@@ -33,10 +33,10 @@ object MediumDataSample {
     Lang("fiu", "Kväni", Some("LATIN")))
 
   /**
-   * Koppling mellan språk och 'altName':
+   * Koppling mellan språk och 'altName':<br/>
    * Språkkod (ISO) -> Lista på alternativa namn
    */
-  private val altNames = Map(
+  val altNames = Map(
     ("swe" -> Seq("svenska")),
     ("fin" -> Seq("finska", "suomi")),
     ("spa" -> Seq("español")),
@@ -60,11 +60,11 @@ object MediumDataSample {
     ("fiu" -> Seq("kvääni", "kvänska", "kvensk")))
 
   /**
-   * Koppling mellan språk och språkfamilj:
+   * Koppling mellan språk och språkfamilj:<br/>
    * Språkkod (ISO) -> Namn på språkfamiljer
    * 
    */
-  private val langFamilies = Map(
+  val langFamilies = Map(
     ("swe" -> Seq("Indo-European", "Germanic", "North Germanic")),
     ("fin" -> Seq("Uralic", "Finno-Ugric", "Finnic")),
     ("spa" -> Seq("Indo-European", "Italic", "Romance", "Italo-Western", "Gallo-Iberian", "Ibero-Romance", "West Iberian")),
@@ -91,7 +91,7 @@ object MediumDataSample {
   /**
    * Koppling mellan namn på språkfamiljer och deras ISO-koder.
    */
-  private val family2iso = langFamilies.valuesIterator.toSet.flatten.map(familyName => 
+  val family2iso = langFamilies.valuesIterator.toSet.flatten.map(familyName => 
     familyName match {
       case "Afro-Asiatic" => Some(familyName -> "afa")
       case "Indo-European" => Some(familyName -> "ine")
@@ -140,10 +140,10 @@ object MediumDataSample {
 
 
   /**
-   * Koppling mellan språk och länder:
+   * Koppling mellan språk och länder:<br/>
    * Språkkod (ISO) -> Landskod (ISO)
    */
-  private val langsAndCountries = Map(
+  val langsAndCountries = Map(
     (("swe", "SE") -> LangAndCountry(Some(true), Some(9000000))),
     (("swe", "FI") -> LangAndCountry(Some(true), Some(300000))),
     (("fin", "FI") -> LangAndCountry(Some(true), Some(61000000))),
@@ -210,30 +210,32 @@ object MediumDataSample {
     using(session) {
       transaction{
 	
-	// DELETE EXISTING DATABASE, IF IT EXISTS
+	/* Tar bort databasen, om den redan finns */
         LangDb.drop
 
-	// CREATE A NEW, EMPTY DATABASE
+	/* Skapar en ny, tom databas */
         LangDb.create
 	
-	// LANG INSERTIONS
+	/* Lägger till språken i databasen  */
 	langs.foreach(LangDb.langs.insert(_))
 
-	// LANG-ALT NAME ASSOCIATIONS
+	/* Associationer Lang-AltName */
 	for ( (isoLangOfLanguage, altNamesForLang) <- altNames ) {
 	  for ( altName <- altNamesForLang ) {
 	    val lang = LangDb.langs.where(l => l.iso === isoLangOfLanguage).single
+	    /* 'associate' skapar en koppling mellan Lang och AltName,
+	     * och lägger till den i associationstabellen */
 	    lang.aNames.associate(AltName(altName))
 	  }
 	}
 
-	// FAMILY NAME INSERTIONS
+	/* Lägger till språkfamiljer i databasen */
 	for (familyName <- langFamilies.valuesIterator.toSet.flatten) {
 	    val familyIso = family2iso.get(familyName)
 	    LangDb.families.insert(Family(familyName, familyIso))
 	}
 
-	// LANG-FAMILY ASSOCIATIONS
+	/* Associationer Lang-Family */
 	for ( (isoLang, families) <- langFamilies ) {
  	  val lang = LangDb.langs.where(l => l.iso === isoLang).single
 	  for (familyName <- families) {
@@ -242,22 +244,22 @@ object MediumDataSample {
           }
 	}
 
-	// COUNTRY INSERTIONS
+	/* Lägger till länder i databasen */
 	countries.foreach(LangDb.countries.insert(_))
 
-	// LANG-COUNTRY ASSOCIATIONS
+	/* Associationer Lang-Country */
 	for ( ((isoLang, isoCountry), l2c0) <- langsAndCountries ) {
 	  val lang = LangDb.langs.where(l => l.iso === isoLang).single
 	  val country = LangDb.countries.where(c => c.iso === isoCountry).single
 
-	  // TODO: associate => assign!
- 	  val l2c = lang.countries.associate(country)
+ 	  /* 'assign' skapar en koppling mellan Lang och Country, utan
+	   * att lägga till något i tabellen LangAndCountry... */
+	  val l2c = lang.countries.assign(country).copy(speakers = l2c0.speakers,
+							official = l2c0.official)
 
- 	  update(LangDb.langsAndCountries)(item =>
- 	    where(item.langId === l2c.langId and
- 	  	  item.countryId === l2c.countryId)
-             set(item.speakers := l2c0.speakers,
-    	        item.official := l2c0.official))
+	  /* ... och efter att vi skapat en kopia med antal talare och
+	   * officiell status (ovan) lägger vi till kopplingen i databasen. */
+	  LangDb.langsAndCountries.insert(l2c)
 	}
       }
     }

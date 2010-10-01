@@ -103,11 +103,6 @@ class MediumDataSampleTest extends Specification {
     "be able to sum up the number of alt names for each language (with join)" in {
       import org.squeryl.PrimitiveTypeMode._
 
-      // SELECT LANG.ENNAME, COUNT(ALT_LANG_NAMES.NAME) 
-      //  FROM LANG
-      //  LEFT JOIN ALT_LANG_NAMES ON(LANG.ID = ALT_LANG_NAMES.LANGID)
-      //  GROUP BY LANG.ENNAME
-      
        inTransaction {
     	 val session = Session.currentSession
 
@@ -131,17 +126,6 @@ class MediumDataSampleTest extends Specification {
      "be able to sum up the total number of speakers per language (stored in db as speakers per lang+country)" in {
        import org.squeryl.PrimitiveTypeMode._
 
-       
-       // Select
-       //   Lang.enName as LANG_NAME,
-       //   sum(LangAndCountry.speakers) as TOTAL_N_SPEAKERS
-       // From
-       //  LangAndCountry
-       //  inner join Lang on (Lang.id = LangAndCountry.langId)
-       // Group By
-       //   Lang.enName
-       
-
         inTransaction {
      	 val session = Session.currentSession
 
@@ -153,14 +137,6 @@ class MediumDataSampleTest extends Specification {
     	    orderBy(sum(l2c.speakers))
     	    on(lang.id === l2c.langId)
     	  )
-
-    	  // returnerar totalt antal talare per språk-id
-    	  // val query2 = from(LangDb.langsAndCountries) (
-     	  //   (l2c) =>
-     	  //     groupBy(l2c.langId)
-     	  //   compute(sum(l2c.speakers))
-     	  //   orderBy(sum(l2c.speakers))
-     	  // )
 
     	  val count = query.filter(q => q.measures != None).
     	  map(q => (q.key -> q.measures.get)).toMap
@@ -180,10 +156,12 @@ class MediumDataSampleTest extends Specification {
           
           LangDb.altNames.delete(kaLangs)
 	  
-          val kaLangs2 = LangDb.altNames.where(_.name.regex("ka$"))//from(LangDb.altNames)(an => where( an.name.regex("ka$")) select(an))
+          val kaLangs2 = LangDb.altNames.where(_.name.regex("ka$"))
           kaLangs2.size mustEqual 0
-          // TRYING A ROLLBACK HERE TO AVOID COMMITTING THE CHANGES
-          error("DARN")
+
+	  /* Gör en rollback för att inte ändringen ska sparas i databasen */
+	  if (Session.hasCurrentSession)
+	    Session.currentSession.connection.rollback
 	}
       } catch {case _ =>}
     } 
