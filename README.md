@@ -114,7 +114,8 @@ grundläggande kommandon.
 
 Det finns två konfigurationsfiler att hålla redan på. Den ena är
 `project/build.properties` och den andra är projektdefinitionen. I
-detta exempel är det `project/build/SquerylDemoProject.scala`.
+detta exempel finns projekdefinitionen i
+`project/build/SquerylDemoProject.scala`.
 
 ## Bra länkar
 
