@@ -8,11 +8,7 @@ Kodexempel till squerylartikeln i Datormagazin nummer 11,
 2010. LangDb.scala är ett litet exempel som illustrerar hur man
 använder [Squeryl](http://squeryl.org).
 
-Instruktioner för att testa exempeldatabasen finns här:
-
-[http://github.com/NikolajLindberg/LangDb-Squerylexempel/wiki](http://github.com/NikolajLindberg/LangDb-Squerylexempel/wiki)
-
-## Snabb sammanfattning, följ stegen nedan:
+## Instruktioner för att testa exempeldatabasen
 
 
 * Se till att du har en modern [JVM](http://java.com) installerad
