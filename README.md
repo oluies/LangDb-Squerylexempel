@@ -72,7 +72,7 @@ inget "simpelt" över SBT.
 
 Engelska installationsanvisningar finns
 [här](http://code.google.com/p/simple-build-tool/wiki/Setup). Det
-behövs knappast någon översättning. Ticket är att skapa en exekverbar
+behövs knappast någon översättning. Tricket är att skapa en exekverbar
 batch/skalfil som kör SBT.
 
 På Linux: 
