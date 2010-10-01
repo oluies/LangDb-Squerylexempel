@@ -110,6 +110,12 @@ grundläggande kommandon.
 * `doc` --- genererar scaladoc
 * `clean` --- rensar bort kompilerad kod
 
+### Konfiguration
+
+Det finns två konfigurationsfiler att hålla redan på. Den ena är
+`project/build.properties` och den andra är projektdefinitionen. I
+detta exempel är det `project/build/SquerylDemoProject.scala`.
+
 ## Bra länkar
 
 Missa inte samlingen med
