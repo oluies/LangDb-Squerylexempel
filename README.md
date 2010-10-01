@@ -1,3 +1,5 @@
+[http://github.com/NikolajLindberg/LangDb-Squerylexempel](http://github.com/NikolajLindberg/LangDb-Squerylexempel)
+
 # LangDb.scala 
 
 Kodexempel till squerylartikeln i Datormagazin nummer 11
