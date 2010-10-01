@@ -19,6 +19,8 @@ import org.squeryl.PrimitiveTypeMode._
  * @param id Tabellens primärnyckel
  */
 trait AutoId extends KeyedEntity[Int] {
+
+  /* Tabellens primärnyckel*/
   val id: Int = 0
 }
 
@@ -45,7 +47,7 @@ case class Lang(@Column(length=3) iso: String,
 		cBlock: Option[String]) extends AutoId {
 
   /** Om konstruktorn tar 'Option'-parametrar, behövs en extra
-   konstruktor utan argument (Squeryl behöver detta, tills vidare) */
+   konstruktor utan argument (Squeryl behöver detta) */
    def this() = this("", "", Some(""))
  
   /**
@@ -85,6 +87,7 @@ case class AltName(name: String, langId: Int = 0) extends AutoId {
 case class Country(@Column(length=2) iso: String, 
 		   enName: String, area: Option[String]) extends AutoId 
 {
+  /** Extra konstruktor för Squeryl */
   def this() = this("", "", Some("")) 
 }
 
@@ -97,6 +100,7 @@ case class Country(@Column(length=2) iso: String,
 case class Family(name: String, 
 		  @Column(length=3) iso: Option[String]) extends AutoId 
 {
+  /** Extra konstruktor för Squeryl */
   def this() = this("", Some(""))
 }
 
@@ -110,7 +114,11 @@ case class Family(name: String,
 case class LangAndCountry(official: Option[Boolean], speakers: Option[Long], 
                           langId: Int = 0, countryId: Int = 0) 
   extends KeyedEntity[CompositeKey2[Int,Int]] {
+
+  /** Extra konstruktor för Squeryl */
   def this() = this(Some(false), Some(0), 0, 0)
+
+   /** Sammansatt databasnyckel */
   def id = compositeKey(countryId, langId)
 }
 
@@ -121,6 +129,8 @@ case class LangAndCountry(official: Option[Boolean], speakers: Option[Long],
  */
 case class LangAndFamily(langId: Int = 0, familyId: Int = 0) 
   extends KeyedEntity[CompositeKey2[Int,Int]] {
+
+   /** Sammansatt databasnyckel */
   def id = compositeKey(langId, familyId)
 }
 
