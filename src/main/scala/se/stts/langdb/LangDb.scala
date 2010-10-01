@@ -40,7 +40,9 @@ trait AutoId extends KeyedEntity[Int] {
  * 
  */
 
-case class Lang(iso: String, enName: String, cBlock: Option[String]) extends AutoId {
+case class Lang(@Column(length=3) iso: String, 
+		enName: String, 
+		cBlock: Option[String]) extends AutoId {
 
   /** Om konstruktorn tar 'Option'-parametrar, behövs en extra
    konstruktor utan argument (Squeryl behöver detta, tills vidare) */
@@ -80,7 +82,8 @@ case class AltName(name: String, langId: Int = 0) extends AutoId {
  * @param enName Landets namn
  * @param area Region/världsdel
  */
-case class Country(iso: String, enName: String, area: Option[String]) extends AutoId 
+case class Country(@Column(length=2) iso: String, 
+		   enName: String, area: Option[String]) extends AutoId 
 {
   def this() = this("", "", Some("")) 
 }
@@ -91,7 +94,8 @@ case class Country(iso: String, enName: String, area: Option[String]) extends Au
  * @param name Språkfamiljens namn
  * @param iso Språkfamiljens ISO-kod (tre tecken, ISO 639-5)
  */
-case class Family(name: String, iso: Option[String]) extends AutoId 
+case class Family(name: String, 
+		  @Column(length=3) iso: Option[String]) extends AutoId 
 {
   def this() = this("", Some(""))
 }
