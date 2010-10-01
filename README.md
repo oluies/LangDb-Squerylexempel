@@ -128,7 +128,7 @@ En samling länkar, relevanta för exempelprojektet.
 
 * Den viktigaste platsen för Scala: [scala-lang.org](http://scala-lang.org)
   * En av flera av Scalas diskussionsgrupper heter [Scala user](http://scala-programming-language.1934581.n4.nabble.com/Scala-User-f1934582.html)
-* [Planet Scala](http://www.planetscala.com/) samlar scalabloggar.
+* [Planet Scala](http://www.planetscala.com/) samlar scalabloggar
 * Squeryl bor här: [squeryl.org](http://squeryl.org)
     * Squeryls diskussionsgrupp: [groups.google.com/group/squeryl](http://groups.google.com/group/squeryl?pli=1)
 * [Specs](http://code.google.com/p/specs/) är ett scalabibliotek för programtestning
