@@ -46,7 +46,7 @@ kan du se alla detaljer som inte fanns plats för i artikeln.
 ## Koddokumentation 
 
 Koden är rikligt dokumenterad, och finns genererad med hjälp av
-`scaladoc`.
+`scaladoc`. Öppna filen XXX i din html-läsare och njut.
 
 ## Exempel på inläsning av data
 
