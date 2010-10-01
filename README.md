@@ -79,6 +79,7 @@ På Linux:
 
 * Lägg SBT-jarfilen i ~/bin tillsammans med skriptet `sbt`, som skall
    ha följande innehåll:
+
   `java -Xmx512M -jar `dirname $0`/sbt-launch.jar "$@"`
 * Gör skriptet exekverbart: `chmod u+x ~/bin/sbt`
 
