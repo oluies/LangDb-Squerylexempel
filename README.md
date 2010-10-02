@@ -200,7 +200,7 @@ bra översikt och förklaring av relationsdatabaser.)
   [ErlyBird](http://sourceforge.net/projects/erlybird/files/)
 * Scalaplugin för Eclipse: [scala-ide.org](http://www.scala-ide.org/)
 * Scalaplugin för
-  [IntelliJ IDEA]:(http://confluence.jetbrains.net/display/SCA/Getting+Started+with+IntelliJ+IDEA+Scala+Plugin)
+  [IntelliJ IDEA](http://confluence.jetbrains.net/display/SCA/Getting+Started+with+IntelliJ+IDEA+Scala+Plugin)
 * "Simple build tool",
    [Sbt](http://code.google.com/p/simple-build-tool/), är populärt
    bland scalaprogrammerare, eftersom det, trots namnet, är så
