@@ -1,12 +1,13 @@
-Denna fil finns här:
+# Kodexempel till squerylartikeln i Datormagazin nummer 11,
+2010.
 
+Denna fil finns att läsa här:
 [http://github.com/NikolajLindberg/LangDb-Squerylexempel](http://github.com/NikolajLindberg/LangDb-Squerylexempel)
 
 
 # LangDb.scala 
 
-Kodexempel till squerylartikeln i Datormagazin nummer 11,
-2010. LangDb.scala är ett litet exempel som illustrerar hur man
+LangDb.scala är ett litet exempel som illustrerar hur man
 använder [Squeryl](http://squeryl.org).
 
 
