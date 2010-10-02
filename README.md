@@ -153,9 +153,6 @@ projektdefinitionen. I detta exempel finns projekdefinitionen i
 
 En samling länkar, relevanta för exempelprojektet.
 
-
-## Webbplatser
-
 * Den viktigaste platsen för Scala:
   [scala-lang.org](http://scala-lang.org)
   * En av flera av Scalas diskussionsgrupper heter [Scala
