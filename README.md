@@ -42,6 +42,19 @@ Själva exempeldatabasen finns i
 kan du se alla detaljer som inte fanns plats för i artikeln.
 
 
+# Testexempel
+
+Till koden finns en uppsättning tester, som körs med hjälp av
+[Specs](http://code.google.com/p/specs/). Specs är ett bibliotek för
+enhetstestning (besläktat med exempelvis JUnit). 
+
+Testkoden är intressant, dels för att den visar hur Specs används,
+dels för att den visar hur testdatabasen används.
+
+Källkoden till testerna ligger här:
+`LangDb-Squerylexempel/src/test/scala/se/stts/langdb/`
+
+
 # Dokumentation 
 
 Koden är rikligt dokumenterad. HTML-versionen genereras med hjälp av
@@ -54,19 +67,6 @@ Koden är rikligt dokumenterad. HTML-versionen genereras med hjälp av
 Det finns en särskilld fil som sköter inläsningen av lite data,
 `src/test/scala/se/stts/langdb/MediumDataSample.scala` (notera att den
 ligger i "test").
-
-
-# Testexempel
-
-Till koden finns en uppsättning tester, som körs med hjälp av
-[Specs](http://code.google.com/p/specs/). Specs är ett bibliotek för
-enhetstestning (besläktat med exempelvis JUnit). 
-
-Testkoden är intressant, dels för att den visar hur Specs används,
-dels för att den visar hur testdatabasen används.
-
-Källkoden till testerna ligger här:
-`LangDb-Squerylexempel/src/test/scala/se/stts/langdb/`
 
 
 # H2-databasen och databasfilerna
