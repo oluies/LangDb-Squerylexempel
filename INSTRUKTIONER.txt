@@ -27,12 +27,11 @@ Squeryl (http://squeryl.org).
   o Installera Git (http://git-scm.com), om du vill, och checka ut testprojektet: 
     git clone git://github.com/NikolajLindberg/LangDb-Squerylexempel.git
 
-  o _Eller_ ladda ner koden här: 
-    http://github.com/downloads/NikolajLindberg/LangDb-Squerylexempel/Squeryldemo_DMZ_11_2010.zip,
-    och packa upp den
+  o _Eller_ ladda ner koden från Github, och packa upp den:
+    http://github.com/downloads/NikolajLindberg/LangDb-Squerylexempel/Squeryldemo_DMZ_11_2010.zip
  
-  o _Eller_ hämta koden från Datormagazins filarkiv:
-    http://www.datormagazin.se/filer/, och packa upp den
+  o _Eller_ hämta koden från Datormagazins filarkiv, och packa upp den:
+    http://www.datormagazin.se/filer
 
 * Ställ dig i katalogen LangDb-Squerylexempel
 
