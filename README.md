@@ -1,6 +1,10 @@
 # Kodexempel till squerylartikeln i Datormagazin 11/2010
 
-Denna fil finns att läsa här:
+Här finns information för att installera och köra koden som hör till
+artikeln om databas-API:et Squeryl, som presenteras i Datormagazin
+11/2010.
+
+Instruktionerna i denna fil finns att läsa här:
 [http://github.com/NikolajLindberg/LangDb-Squerylexempel](http://github.com/NikolajLindberg/LangDb-Squerylexempel)
 
 
