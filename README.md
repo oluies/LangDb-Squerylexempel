@@ -189,7 +189,7 @@ En samling länkar, relevanta för exempelprojektet.
 * [Specs](http://code.google.com/p/specs/) är ett scalabibliotek för
   programtestning
 * Versionshantering med [Git](http://git-scm.com/)
-* Databasen [H2](http://http://h2database.com), som används i
+* Databasen [H2](http://h2database.com), som används i
   exempelprojektet
 
 
