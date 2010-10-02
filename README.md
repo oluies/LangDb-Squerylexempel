@@ -27,7 +27,7 @@ använder [Squeryl](http://squeryl.org).
       * Checka ut testprojektet: 
           ```git clone git://github.com/NikolajLindberg/LangDb-Squerylexempel.git```
 
-  * _Eller_ ladda ner koden här XXX, och packa upp den
+  * _Eller_ ladda ner koden [här](http://github.com/downloads/NikolajLindberg/LangDb-Squerylexempel/Squeryldemo_DMZ_11_2010.zip), och packa upp den
  
   * _Eller_ hämta koden från [Datormagazins filarkiv](http://www.datormagazin.se/filer/), och packa upp den
 
@@ -62,6 +62,12 @@ Källkoden till testerna ligger här:
 `LangDb-Squerylexempel/src/test/scala/se/stts/langdb/`
 
 
+# Exempel på inläsning av data
+
+Det finns en särskild fil som sköter inläsningen av lite data,
+`LangDb-Squerylexempel/src/test/scala/se/stts/langdb/MediumDataSample.scala`
+(notera att den ligger i test-katalogen).
+
 # Dokumentation 
 
 Koden är dokumenterad, och går bra att läsa direkt i källkoden. Med
@@ -72,13 +78,6 @@ hjälp av `scaladoc` kan man generera en HTML-version, om så
 Öppna filen
 `LangDb-Squerylexempel/target/scala_2.8.0/doc/main/api/index.html` in
 en webbläsare.
-
-
-# Exempel på inläsning av data
-
-Det finns en särskild fil som sköter inläsningen av lite data,
-`LangDb-Squerylexempel/src/test/scala/se/stts/langdb/MediumDataSample.scala`
-(notera att den ligger i test-katalogen).
 
 
 # H2-databasen och databasfilerna
@@ -202,9 +201,7 @@ Diverse verktyg
 * Scalaplugin för Eclipse: [scala-ide.org](http://www.scala-ide.org/)
 * Scalaplugin för
   [IntelliJ IDEA](http://confluence.jetbrains.net/display/SCA/Getting+Started+with+IntelliJ+IDEA+Scala+Plugin)
-* [SBT](http://code.google.com/p/simple-build-tool/) är populärt bland
-   scalaprogrammerare, eftersom det, trots namnet, är så avancerat ---
-   men ändå lättanvänt
+* [SBT](http://code.google.com/p/simple-build-tool/), verktyg för kompilering av scalaprojekt
 
 
 # Läsning
