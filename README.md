@@ -181,7 +181,7 @@ En samling länkar, relevanta för exempelprojektet.
 * Beginning Scala (David Pollak)
 * Programming in Scala (Odersky, Spoon och Venners)
 * [Programming Scala](http://programming-scala.labs.oreilly.com/)
-  (Wampler, Payne) <- OBS! Fritt tillgänglig nätversion
+  (Wampler, Payne) OBS! Fritt tillgänglig nätversion
 
 
 ## Text om relationsdatabaser
