@@ -88,7 +88,7 @@ När `test` körs i SBT, skapas två databasfiler i tmp-katalogen:
 * MediumDataSample.h2.db
 * ArtikelKodTest.h2.db
 
-Om du manullet installerar H2, får du tillgång till ett grafiskt
+Om du manuellt installerar H2, får du tillgång till ett grafiskt
 gränssnitt som körs via en webbläsare. Du kan koppla upp dig mot
 databasfilerna ovan via detta gränssnitt, och söka i dem med vanlig
 SQL.
