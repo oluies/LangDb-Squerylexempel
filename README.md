@@ -65,7 +65,7 @@ Koden är rikligt dokumenterad. HTML-versionen genereras med hjälp av
 
 # Exempel på inläsning av data
 
-Det finns en särskilld fil som sköter inläsningen av lite data,
+Det finns en särskild fil som sköter inläsningen av lite data,
 `LangDb-Squerylexempel/src/test/scala/se/stts/langdb/MediumDataSample.scala`
 (notera att den ligger i "test").
 
