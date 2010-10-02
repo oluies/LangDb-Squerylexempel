@@ -170,6 +170,22 @@ En samling länkar, relevanta för exempelprojektet.
   exempelprojektet
 
 
+Diverse verktyg
+
+* Scalaplugin för Emacs:
+  [Ensime](http://github.com/aemoncannon/ensime)
+* Scalaplugin för NetBeans:
+  [ErlyBird](http://sourceforge.net/projects/erlybird/files/)
+* Scalaplugin för Eclipse: [scala-ide.org](http://www.scala-ide.org/)
+* Scalaplugin för
+  [IntelliJ IDEA](http://confluence.jetbrains.net/display/SCA/Getting+Started+with+IntelliJ+IDEA+Scala+Plugin)
+* "Simple build tool",
+   [Sbt](http://code.google.com/p/simple-build-tool/), är populärt
+   bland scalaprogrammerare, eftersom det, trots namnet, är så
+   avancerat --- men ändå lättanvänt
+
+
+
 # Läsning
 
 
@@ -189,16 +205,3 @@ Architecture](http://oreilly.com/catalog/javadtabp/chapter/index.html). (En
 bra översikt och förklaring av relationsdatabaser.)
 
 
-# Diverse verktyg
-
-* Scalaplugin för Emacs:
-  [Ensime](http://github.com/aemoncannon/ensime)
-* Scalaplugin för NetBeans:
-  [ErlyBird](http://sourceforge.net/projects/erlybird/files/)
-* Scalaplugin för Eclipse: [scala-ide.org](http://www.scala-ide.org/)
-* Scalaplugin för
-  [IntelliJ IDEA](http://confluence.jetbrains.net/display/SCA/Getting+Started+with+IntelliJ+IDEA+Scala+Plugin)
-* "Simple build tool",
-   [Sbt](http://code.google.com/p/simple-build-tool/), är populärt
-   bland scalaprogrammerare, eftersom det, trots namnet, är så
-   avancerat --- men ändå lättanvänt
