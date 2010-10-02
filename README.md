@@ -165,11 +165,11 @@ projektdefinitionen. I detta exempel finns projekdefinitionen i
 För detta exempelprojekt används följande programversioner (se även
 konfigurationsfilerna ovan):
 
-* [[Squeryl|http://squeryl.org]] 0.9.4-RC2
-* Databas [[H2|http://www.h2database.com]] 1.2.141
-* [[Scala|http://scala-lang.org]] 2.8 final
-* [[Java|http://java.com]] 1.6.0
-* SBT 0.7.4
+* [Squeryl](http://squeryl.org) 0.9.4-RC2
+* [H2](http://www.h2database.com) 1.2.141
+* [Scala](http://scala-lang.org) 2.8 final
+* [Java](http://java.com) 1.6.0
+* [SBT](http://code.google.com/p/simple-build-tool/) 0.7.4
 
 
 # Länkar
