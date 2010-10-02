@@ -22,7 +22,7 @@ använder [Squeryl](http://squeryl.org).
 * Installera [SBT](http://code.google.com/p/simple-build-tool/). Se "Mer om SBT" nedan.
 
 * Ladda ner projektet:
-  * Installera [git](http://git-scm.com/) (om du vill), och checka ut testprojektet: 
+  * Installera [Git](http://git-scm.com/) (om du vill), och checka ut testprojektet: 
     ```git clone git://github.com/NikolajLindberg/LangDb-Squerylexempel.git```
 
   * _Eller_ ladda ner koden [här](http://github.com/downloads/NikolajLindberg/LangDb-Squerylexempel/Squeryldemo_DMZ_11_2010.zip), och packa upp den
@@ -62,7 +62,7 @@ Källkoden till testerna ligger här:
 
 # Exempel på inläsning av data
 
-Det finns en särskild fil som sköter inläsningen av lite data,
+Det finns en särskild fil som läser in lite data,
 `LangDb-Squerylexempel/src/test/scala/se/stts/langdb/MediumDataSample.scala`
 (notera att den ligger i test-katalogen).
 
@@ -70,11 +70,10 @@ Det finns en särskild fil som sköter inläsningen av lite data,
 
 Koden är dokumenterad, och går bra att läsa direkt i källkoden. Med
 hjälp av `scaladoc` kan man generera en HTML-version, om så
-önskas. Starta SBT och skriv
-`doc`.
+önskas. Starta SBT och skriv `doc`.
 
 Öppna filen
-`LangDb-Squerylexempel/target/scala_2.8.0/doc/main/api/index.html` in
+`LangDb-Squerylexempel/target/scala_2.8.0/doc/main/api/index.html` i
 en webbläsare.
 
 
@@ -175,7 +174,7 @@ En samling länkar, relevanta för exempelprojektet.
 
 * Den viktigaste platsen för Scala:
   [scala-lang.org](http://scala-lang.org)
-  * En av flera av Scalas diskussionsgrupper heter [Scala
+  * En av Scalas flera diskussionsgrupper är [Scala
     user](http://scala-programming-language.1934581.n4.nabble.com/Scala-User-f1934582.html)
 * [Planet Scala](http://www.planetscala.com/) samlar scalabloggar
 * Squeryl bor här: [squeryl.org](http://squeryl.org)
