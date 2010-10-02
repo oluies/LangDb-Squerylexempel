@@ -29,7 +29,7 @@ använder [Squeryl](http://squeryl.org).
 
 * Ställ dig i katalogen `LangDb-Squerylexempel`
 * Starta `sbt`
-* Skriv `update` (nu hämtar sbt de externa bibliotek som krävs)
+* Skriv `update` (nu hämtar SBT de externa bibliotek som krävs)
 * Skriv `test` (exempelprojektet kompileras och testerna körs)
 
 Om du lyckas med stegen ovan, kan du med fördel börja titta på
@@ -50,7 +50,8 @@ Till koden finns en uppsättning tester, som körs med hjälp av
 enhetstestning (besläktat med exempelvis JUnit). 
 
 Testkoden är intressant, dels för att den visar hur Specs används,
-dels för att den visar hur testdatabasen används.
+dels för att den visar hur testdatabasen används. Här finns exempel på
+hur man kopplar upp sig till en databas och anropar den via Squeryl.
 
 Källkoden till testerna ligger här:
 `LangDb-Squerylexempel/src/test/scala/se/stts/langdb/`
@@ -58,16 +59,21 @@ Källkoden till testerna ligger här:
 
 # Dokumentation 
 
-Koden är rikligt dokumenterad. HTML-versionen genereras med hjälp av
-`scaladoc`. Starta `SBT`, och skriv `doc`. Öppna filen
-`LangDb-Squerylexempel/target/scala_2.8.0/doc/main/api/index.html` in en webbläsare.
+Koden är dokumenterad, och går bra att läsa direkt i källkoden. Med
+hjälp av `scaladoc` kan man generera en HTML-version, om så
+önskas. Starta SBT och skriv
+`doc`.
+
+Öppna filen
+`LangDb-Squerylexempel/target/scala_2.8.0/doc/main/api/index.html` in
+en webbläsare.
 
 
 # Exempel på inläsning av data
 
 Det finns en särskild fil som sköter inläsningen av lite data,
 `LangDb-Squerylexempel/src/test/scala/se/stts/langdb/MediumDataSample.scala`
-(notera att den ligger i "test").
+(notera att den ligger i test-katalogen).
 
 
 # H2-databasen och databasfilerna
@@ -90,13 +96,13 @@ SQL.
 # Mer om SBT
 
 SBT, "Simple Build Tool", är en ett lättanvänt kompileringsverktyg
-skrivet i och för Scala. Förutom att det är enkelt att använda, är det
-inget "simpelt" över SBT.
+skrivet i och för Scala.
 
 Engelska installationsanvisningar finns
-[här](http://code.google.com/p/simple-build-tool/wiki/Setup). Det
-behövs knappast någon översättning. Tricket är att skapa en exekverbar
-batch/skalfil som kör SBT.
+[här](http://code.google.com/p/simple-build-tool/wiki/Setup). Installationen
+går ut på att skapa en exekverbar batch/skalfil som kör SBT.
+
+Börja med att ladda ner `sbt-launch-0.7.4.jar`, och gör sedan så här:
 
 ## På Linux: 
 
@@ -110,8 +116,8 @@ batch/skalfil som kör SBT.
 ## På Windows:
 
 * Skapa en batchfil, `sbt.bat`, och se till att den finns i din
-  sökväg. Lägg sbt-jarfilen i samma katalog som batchfilen.
-* Plutta in följande i filen:
+  sökväg. Lägg SBT-jarfilen i samma katalog som batchfilen.
+* Skriv in följande i filen:
 
     ```set SCRIPT_DIR=%~dp0```
 
@@ -120,12 +126,12 @@ batch/skalfil som kör SBT.
 
 ## Exempelkommandon
 
-SBT är ett fint verktyg, som kan göra en massa saker. Här följer några
-grundläggande kommandon.
+SBT är ett avancerat verktyg, som kan göra en massa saker. Här följer
+några grundläggande kommandon.
 
 * `update` --- läser och kompilerar projektfilen, och laddar ner de
   externa bibliotek som eventuellt behövs.
-* `compile` --- kompilerar de Scala- och javafiler som ligger under
+* `compile` --- kompilerar de scala- och javafiler som ligger under
   biblioteket `src`. Kompilerar endast de filer som påverkas av de
   senaste ändringarna.  
 * `~ compile` --- samma som ovan, men körs automatiskt så fort någon källkodsfil
@@ -179,10 +185,9 @@ Diverse verktyg
 * Scalaplugin för Eclipse: [scala-ide.org](http://www.scala-ide.org/)
 * Scalaplugin för
   [IntelliJ IDEA](http://confluence.jetbrains.net/display/SCA/Getting+Started+with+IntelliJ+IDEA+Scala+Plugin)
-* "Simple build tool",
-   [Sbt](http://code.google.com/p/simple-build-tool/), är populärt
-   bland scalaprogrammerare, eftersom det, trots namnet, är så
-   avancerat --- men ändå lättanvänt
+* [SBT](http://code.google.com/p/simple-build-tool/) är populärt bland
+   scalaprogrammerare, eftersom det, trots namnet, är så avancerat ---
+   men ändå lättanvänt
 
 
 # Läsning
