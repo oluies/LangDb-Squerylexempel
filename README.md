@@ -19,8 +19,9 @@ använder [Squeryl](http://squeryl.org).
 
 * Ladda ner projektet:
   * Installera [git](http://git-scm.com/) (om du vill)
+
       * Checka ut testprojektet: 
-        `git clone git://github.com/NikolajLindberg/LangDb-Squerylexempel.git`
+          ```git clone git://github.com/NikolajLindberg/LangDb-Squerylexempel.git```
 
   * _Eller_ ladda ner koden här XXX, och packa upp den
  
@@ -59,14 +60,14 @@ Källkoden till testerna ligger här:
 
 Koden är rikligt dokumenterad. HTML-versionen genereras med hjälp av
 `scaladoc`. Starta `SBT`, och skriv `doc`. Öppna filen
-`target/scala_2.8.0/doc/main/api/index.html` in en webbläsare.
+`LangDb-Squerylexempel/target/scala_2.8.0/doc/main/api/index.html` in en webbläsare.
 
 
 # Exempel på inläsning av data
 
 Det finns en särskilld fil som sköter inläsningen av lite data,
-`src/test/scala/se/stts/langdb/MediumDataSample.scala` (notera att den
-ligger i "test").
+`LangDb-Squerylexempel/src/test/scala/se/stts/langdb/MediumDataSample.scala`
+(notera att den ligger i "test").
 
 
 # H2-databasen och databasfilerna
@@ -143,9 +144,9 @@ grundläggande kommandon.
 ## Konfiguration
 
 Det finns två konfigurationsfiler att hålla redan på. Den ena är
-`project/build.properties` och den andra är projektdefinitionen. I
-detta exempel finns projekdefinitionen i
-`project/build/SquerylDemoProject.scala`.
+`LangDb-Squerylexempel/project/build.properties` och den andra är
+projektdefinitionen. I detta exempel finns projekdefinitionen i
+`LangDb-Squerylexempel/project/build/SquerylDemoProject.scala`.
 
 
 # Länkar
