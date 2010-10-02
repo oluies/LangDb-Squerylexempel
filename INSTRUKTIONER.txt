@@ -73,6 +73,7 @@ Det finns en särskild fil som läser in lite data,
 LangDb-Squerylexempel/src/test/scala/se/stts/langdb/MediumDataSample.scala
 (notera att den ligger i test-katalogen).
 
+
 # Dokumentation 
 
 Koden är dokumenterad, och går bra att läsa direkt i källkoden. Med
