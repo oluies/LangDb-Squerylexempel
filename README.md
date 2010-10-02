@@ -1,4 +1,4 @@
-# Kodexempel till squerylartikeln i Datormagazin nummer 11/2010
+# Kodexempel till squerylartikeln i Datormagazin 11/2010
 
 Denna fil finns att läsa här:
 [http://github.com/NikolajLindberg/LangDb-Squerylexempel](http://github.com/NikolajLindberg/LangDb-Squerylexempel)
