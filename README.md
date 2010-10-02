@@ -33,7 +33,8 @@ använder [Squeryl](http://squeryl.org).
 
 * Ställ dig i katalogen `LangDb-Squerylexempel`
 * Starta `sbt`
-* Skriv `update` (nu hämtar SBT de externa bibliotek som krävs)
+* Skriv `update` (nu hämtar SBT alla externa bibliotek som krävs,
+  inklusive Squeryl)
 * Skriv `test` (exempelprojektet kompileras och testerna körs)
 
 Om du lyckas med stegen ovan, kan du med fördel börja titta på
