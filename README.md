@@ -189,7 +189,7 @@ Architecture](http://oreilly.com/catalog/javadtabp/chapter/index.html). (En
 bra översikt och förklaring av relationsdatabaser.)
 
 
-## Diverse verktyg
+# Diverse verktyg
 
 * Scalaplugin för Emacs:
   [Ensime](http://github.com/aemoncannon/ensime)
