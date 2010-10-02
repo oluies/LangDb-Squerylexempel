@@ -160,6 +160,22 @@ projektdefinitionen. I detta exempel finns projekdefinitionen i
 `LangDb-Squerylexempel/project/build/SquerylDemoProject.scala`.
 
 
+## Programversioner
+
+För detta exempelprojekt används följande programversioner:
+* [[Squeryl|http://squeryl.org]] 0.9.4-RC2
+* Databas [[H2|http://www.h2database.com]] 1.2.141
+* [[Scala|http://scala-lang.org]] 2.8 final
+* [[Java|http://java.com]] 1.6.0
+* SBT 0.7.4
+
+Se även
+`[[project/build/SquerylDemoProject.scala|http://github.com/NikolajLindberg/LangDb-Squerylexempel/blob/master/project/build/SquerylDemoProject.scala]]`
+och
+`[[project/build.properties|http://github.com/NikolajLindberg/LangDb-Squerylexempel/blob/master/project/build.properties]]`
+
+
+
 # Länkar
 
 En samling länkar, relevanta för exempelprojektet.
