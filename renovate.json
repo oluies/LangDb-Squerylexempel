@@ -2,5 +2,12 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended"
+  ],
+  "packageRules": [
+    {
+      "description": "project/build.properties is in sbt 0.7 format (project.organization, build.scala.versions=2.8.0). sbt 0.13+ ignores every key but sbt.version and needs a build definition this repo does not have, so bumping sbt.version cannot yield a working build. See closed PRs #2 and #3.",
+      "matchDepNames": ["sbt/sbt"],
+      "enabled": false
+    }
   ]
 }
