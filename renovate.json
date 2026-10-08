@@ -1,11 +1,13 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended"
+  "enabled": false,
+  "description": [
+    "Renovate is disabled for this repository. It is a 2010 Scala 2.8 reference project: project/build.properties is in sbt 0.7 format (project.organization, build.scala.versions=2.8.0), so no current sbt launcher can build it and no dependency bump can be validated or is worth making.",
+    "The packageRules below are kept as a record of why specific updates were rejected, so they still apply if this is ever re-enabled. See closed PRs #2 and #3."
   ],
   "packageRules": [
     {
-      "description": "project/build.properties is in sbt 0.7 format (project.organization, build.scala.versions=2.8.0). sbt 0.13+ ignores every key but sbt.version and needs a build definition this repo does not have, so bumping sbt.version cannot yield a working build. See closed PRs #2 and #3.",
+      "description": "project/build.properties is in sbt 0.7 format. sbt 0.13+ ignores every key but sbt.version and needs a build definition this repo does not have, so bumping sbt.version cannot yield a working build.",
       "matchDepNames": ["sbt/sbt"],
       "enabled": false
     }
